@@ -21,4 +21,7 @@ public class WishlistController {
 			return new ResponseEntity<Wishlist>(wishlistService.addWishlist(wishlist) , HttpStatus.OK);
 	}
 
+	@DeleteMapping("/deletewishlist")
+	public void removeWishlist(@PathVariable Wishlist wishlist ){wishlistService.removeWishlist(wishlist);}
+
 }
