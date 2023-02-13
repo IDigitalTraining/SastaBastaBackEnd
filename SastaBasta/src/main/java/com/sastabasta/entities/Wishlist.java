@@ -1,12 +1,11 @@
 package com.sastabasta.entities;
 
-import org.hibernate.sql.results.graph.instantiation.internal.ArgumentDomainResult;
-
-import jakarta.persistence.Entity;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Wishlist {
-	
+	@Id
 	private int wishlistId;
 
 	public int getWishlistId() {
