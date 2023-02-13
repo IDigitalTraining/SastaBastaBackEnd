@@ -21,7 +21,6 @@ import com.sastabasta.entities.Product;
 import com.sastabasta.service.CustomerService;
 import com.sastabasta.service.ProductService;
 
-import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/product")

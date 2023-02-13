@@ -20,8 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sastabasta.entities.Customer;
 import com.sastabasta.service.CustomerService;
 
-import jakarta.validation.Valid;
-
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
