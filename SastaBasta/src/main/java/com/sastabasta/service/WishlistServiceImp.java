@@ -17,4 +17,10 @@ public class WishlistServiceImp implements WishlistService{
 		
 	}
 
+	@Override
+	public Wishlist removeWishlist(Wishlist wishlist) {
+
+		return wishlistRepository.delete(wishlist);
+
+	}
 }
