@@ -11,17 +11,18 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
 
+
 @SpringBootApplication
-//@EnableSwagger2
+@EnableSwagger2
 public class SastaBastaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SastaBastaApplication.class, args);
 	}
-//	@Bean
-//	   public Docket productApi() {
-//	      return new Docket(DocumentationType.SWAGGER_2).select()
-//	         .apis(RequestHandlerSelectors.basePackage("com.sastabasta")).build();
-//	   }
+	@Bean
+	   public Docket productApi() {
+	      return new Docket(DocumentationType.SWAGGER_2).select()
+	         .apis(RequestHandlerSelectors.basePackage("com.sastabasta")).build();
+	   }
 
 }

@@ -4,10 +4,12 @@ import org.hibernate.sql.results.graph.instantiation.internal.ArgumentDomainResu
 
 import jakarta.persistence.Entity;
 import com.sastabasta.entities.Product;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Wishlist {
-	
+	@Id
 	private int wishlistId;
 
 	public Product getProd() {
