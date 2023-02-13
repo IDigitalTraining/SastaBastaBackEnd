@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sastabasta.entities.Customer;
+import com.sastabasta.exceptions.CustomerAlreadyPresentException;
 import com.sastabasta.repository.CustomerRepository;
 @Service
 public class CustomerServiceImp implements CustomerService{
@@ -15,10 +16,15 @@ public class CustomerServiceImp implements CustomerService{
 
 	@Override
 	public Customer addCustomer(Customer customer) {
-		
-		return customerRepository.save(customer);
-		
-		
+		if(customer.getCustId()<0)
+		  throw new CustomerAlreadyPresentException("Enter Valid Customer Id");
+		else {
+			if(customerRepository.findByEmail(customer.getEmail()).isPresent() || customerRepository.findById(customer.getCustId()).isPresent()) {
+				 throw new CustomerAlreadyPresentException("Email already Registered");
+			}
+			
+		}
+		return customerRepository.save(customer);		
 	}
 
 

@@ -1,11 +1,11 @@
 package com.sastabasta.entities;
 
-import java.awt.print.Printable;
-
-import javax.management.loading.PrivateClassLoader;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Customer {
@@ -13,7 +13,7 @@ public class Customer {
 	@Id
 	private int custId;
 	private String custName;
-	private long mobileNo;
+	private long mobileNo;	
 	private String email;
 	
 	public int getCustId() {

@@ -1,5 +1,7 @@
 package com.sastabasta.controller;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,8 @@ import com.sastabasta.entities.Product;
 import com.sastabasta.service.CustomerService;
 import com.sastabasta.service.ProductService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/product")
 public class ProductController {
@@ -29,25 +33,14 @@ public class ProductController {
 	CustomerService customerService;
 	
 	@PostMapping("/addproduct")
-	private ResponseEntity<Product> addProduct(@RequestBody Product product) { 
+	private ResponseEntity<Product> addProduct( @RequestBody Product product) { 
 		
 			return new ResponseEntity<Product>(productService.addProduct(product), HttpStatus.OK);
 	}
 	
-	@PutMapping("/edit-Customer")
-	public ResponseEntity<Customer> editCustomer(@RequestBody Customer customer) {
-		
-		return new ResponseEntity<Customer>(customerService.editCustomer(customer), HttpStatus.ACCEPTED);
-	}
-	
-	@DeleteMapping("deletebyid/{id}")
-	public void deleteCustomerById(@PathVariable int id){
-		customerService.deleteById(id);
-	}
-	
-	@GetMapping("/getcustomer/{custId}")
-	public ResponseEntity<Optional<Customer>> getByCustId(@PathVariable int custId) {
-		return new ResponseEntity<Optional<Customer>>(customerService.getCustomerById(custId),HttpStatus.FOUND);
+	@GetMapping("/filter")
+	public ResponseEntity<List<Product>> filterProducts(@RequestBody Map<String, String> map){		
+		return new ResponseEntity<List<Product>>(productService.filterProduct(map),HttpStatus.OK);
 	}
 
 }

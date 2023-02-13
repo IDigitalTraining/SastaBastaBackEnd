@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sastabasta.entities.Customer;
 import com.sastabasta.service.CustomerService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
@@ -27,13 +29,13 @@ public class CustomerController {
 	CustomerService customerService;
 	
 	@PostMapping("/addcustomer")
-	private ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) { 
+	private ResponseEntity<Customer> addCustomer( @RequestBody Customer customer) { 
 		
 			return new ResponseEntity<Customer>(customerService.addCustomer(customer), HttpStatus.OK);
 	}
 	
 	@PutMapping("/edit-Customer")
-	public ResponseEntity<Customer> editCustomer(@RequestBody Customer customer) {
+	public ResponseEntity<Customer> editCustomer( @RequestBody Customer customer) {
 		
 		return new ResponseEntity<Customer>(customerService.editCustomer(customer), HttpStatus.ACCEPTED);
 	}
