@@ -1,11 +1,12 @@
 package com.sastabasta.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sastabasta.entities.Wishlist;
 import com.sastabasta.repository.WishlistRepository;
-
-public class WishlistServiceImp implements WishlistService{
+@Service
+public class WishlistServiceImp implements WishlistService {
 	
 	@Autowired
 	WishlistRepository wishlistRepository;
@@ -14,13 +15,15 @@ public class WishlistServiceImp implements WishlistService{
 	public Wishlist addWishlist(Wishlist wishlist) {
 		
 		return wishlistRepository.save(wishlist);
-		
 	}
 
 	@Override
-	public Wishlist removeWishlist(Wishlist wishlist) {
-
-		return wishlistRepository.delete(wishlist);
-
+	public void deleteWishlist(int wishlistId) {
+	wishlistRepository.deleteById(wishlistId);
+		
 	}
+	
+
+	
+
 }

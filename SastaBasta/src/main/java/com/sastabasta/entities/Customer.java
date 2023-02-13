@@ -1,7 +1,10 @@
 package com.sastabasta.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Customer {
@@ -11,6 +14,10 @@ public class Customer {
 	private String custName;
 	private long mobileNo;	
 	private String email;
+	
+	@JsonIgnore
+	@OneToOne(mappedBy = "customer")
+	private Wishlist wishlist;
 	
 	public int getCustId() {
 		return custId;

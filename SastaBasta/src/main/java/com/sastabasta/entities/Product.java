@@ -2,14 +2,17 @@ package com.sastabasta.entities;
 
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 @Entity 
 public class Product {
@@ -21,6 +24,15 @@ public class Product {
 	private String type;
 	private String colur;
 	private byte[] image;
+	
+	@ManyToMany()
+	@JoinTable(name = "product_wishlist", joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "productId"), inverseJoinColumns = @JoinColumn(name = "wishlist_id", referencedColumnName = "wishlistId"))
+	private List<Wishlist> wishlist;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "product")
+	private List<ProductWebsite> productWebsites;
+	
 	public Product(int productId, String productName, String productBrand, String type, String colur, byte[] image) {
 		super();
 		this.productId = productId;

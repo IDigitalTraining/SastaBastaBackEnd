@@ -1,26 +1,28 @@
 package com.sastabasta.entities;
 
-import org.hibernate.sql.results.graph.instantiation.internal.ArgumentDomainResult;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
-import com.sastabasta.entities.Product;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Wishlist {
+	
 	@Id
 	private int wishlistId;
-
-	public Product getProd() {
-		return prod;
-	}
-
-	public void setProd(Product prod) {
-		this.prod = prod;
-	}
-
-	private Product prod;
+	
+	@JsonIgnore
+	@ManyToMany(mappedBy = "wishlist")
+	private List<Product> product;
+	
+	@OneToOne()
+	@JoinColumn(name = "customer_id")
+	private Customer customer;
 
 	public int getWishlistId() {
 		return wishlistId;
@@ -30,23 +32,16 @@ public class Wishlist {
 		this.wishlistId = wishlistId;
 	}
 
+	public Wishlist(int wishlistId) {
+		super();
+		this.wishlistId = wishlistId;
+	}
+
 	public Wishlist() {
 		
 	}
-
-
-	public Wishlist(int wishlistId, Product prod) {
-		super();
-		this.wishlistId = wishlistId;
-		this.prod = prod;
-	}
-
-	@java.lang.Override
-	public java.lang.String toString() {
-		return "Wishlist{" +
-				"wishlistId=" + wishlistId +
-				", prod=" + prod +
-				'}';
-	}
+	
+	
+	
 
 }

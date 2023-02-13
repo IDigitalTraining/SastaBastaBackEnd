@@ -1,8 +1,9 @@
 package com.sastabasta.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class ProductWebsite {
@@ -13,6 +14,11 @@ public class ProductWebsite {
 	private int productRating;
 	private double productPrice;
 	private double productDiscount;
+	
+	@ManyToOne
+	@JoinColumn(name = "product_id", referencedColumnName = "productId")
+	private Product product;
+	
 	public int getWebId() {
 		return webId;
 	}
