@@ -22,7 +22,7 @@ public class Product {
 	private String productName;
 	private String productBrand;
 	private String type;
-	private String colur;
+	private String colour;
 	private byte[] image;
 	
 	@ManyToMany()
@@ -32,55 +32,90 @@ public class Product {
 	@JsonIgnore
 	@OneToMany(mappedBy = "product")
 	private List<ProductWebsite> productWebsites;
-	
-	public Product(int productId, String productName, String productBrand, String type, String colur, byte[] image) {
+
+	public int getProductId() {
+		return productId;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public String getProductBrand() {
+		return productBrand;
+	}
+
+	public void setProductBrand(String productBrand) {
+		this.productBrand = productBrand;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getColour() {
+		return colour;
+	}
+
+	public void setColour(String colour) {
+		this.colour = colour;
+	}
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
+	public List<Wishlist> getWishlist() {
+		return wishlist;
+	}
+
+	public void setWishlist(List<Wishlist> wishlist) {
+		this.wishlist = wishlist;
+	}
+
+	public List<ProductWebsite> getProductWebsites() {
+		return productWebsites;
+	}
+
+	public void setProductWebsites(List<ProductWebsite> productWebsites) {
+		this.productWebsites = productWebsites;
+	}
+
+	public Product(int productId, String productName, String productBrand, String type, String colour, byte[] image,
+			List<Wishlist> wishlist, List<ProductWebsite> productWebsites) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
 		this.productBrand = productBrand;
 		this.type = type;
-		this.colur = colur;
+		this.colour = colour;
 		this.image = image;
+		this.wishlist = wishlist;
+		this.productWebsites = productWebsites;
 	}
+
 	public Product() {
 		
 	}
-	public int getProductId() {
-		return productId;
-	}
-	public void setProductId(int productId) {
-		this.productId = productId;
-	}
-	public String getProductName() {
-		return productName;
-	}
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-	public String getProductBrand() {
-		return productBrand;
-	}
-	public void setProductBrand(String productBrand) {
-		this.productBrand = productBrand;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
-	public String getColur() {
-		return colur;
-	}
-	public void setColur(String colur) {
-		this.colur = colur;
-	}
-	public byte[] getImage() {
-		return image;
-	}
-	public void setImage(byte[] image) {
-		this.image = image;
-	}
+	
+	
+	
 	
 	
 	

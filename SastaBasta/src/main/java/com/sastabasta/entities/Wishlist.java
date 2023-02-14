@@ -1,6 +1,7 @@
 package com.sastabasta.entities;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -32,14 +33,39 @@ public class Wishlist {
 		this.wishlistId = wishlistId;
 	}
 
-	public Wishlist(int wishlistId) {
+	public List<Product> getProduct() {
+		return product;
+	}
+
+	public void setProduct(List<Product> product) {
+		this.product = product;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Wishlist(int wishlistId, List<Product> product, Customer customer) {
 		super();
 		this.wishlistId = wishlistId;
+		this.product = product;
+		this.customer = customer;
 	}
 
 	public Wishlist() {
 		
 	}
+	
+	
+
+
+	
+
+	
 	
 	
 	

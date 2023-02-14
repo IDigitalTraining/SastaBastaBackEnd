@@ -15,6 +15,14 @@ public interface ProductService {
 	public void deleteProduct(int productId);
 	public Optional<Product> getProductById(int productId);
 	public List<Product> filterProduct(Map<String, String> map);
+	public List<Product> getAllProduct();
+	public List<Product> findProductsByBrand(String productBrand);
+	public List<Product> findProductsByType(String type);
+	public List<Product> findProductsByColour(String colour);
+	//public void addProductToWishlist(int wishlistId,int productId);
+	
+	
+	
 	
 	
 }

@@ -9,14 +9,18 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import com.sastabasta.entities.Product;
+import com.sastabasta.entities.Wishlist;
 import com.sastabasta.repository.ProductRepository;
+import com.sastabasta.repository.WishlistRepository;
 @Service
 public class ProductServiceImp implements ProductService{
 	
 	@Autowired
 	ProductRepository productRepository;
+	
+	@Autowired
+	WishlistRepository wishlistRepository;
 
 	@Override
 	public Product addProduct(Product product) {
@@ -46,12 +50,35 @@ public class ProductServiceImp implements ProductService{
 		List<Product> products=(List<Product>) productRepository.findAll();
 		return products.stream()
 				.filter(product -> map.get("brand")==null ||  product.getProductBrand().equals(sorted.get("brand")))
-			      .filter(product -> map.get("color")==null ||  product.getColur().equals(sorted.get("color")))
+			      .filter(product -> map.get("color")==null ||  product.getColour().equals(sorted.get("color")))
 			      .filter(product -> map.get("name")==null  ||  product.getProductName().equals(sorted.get("name")))
 			      .collect(Collectors.toList());
 		
 	}
+
+	@Override
+	public List<Product> getAllProduct() {
+		
+		return (List<Product>) productRepository.findAll();
+	}
+
+	@Override
+	public List<Product> findProductsByBrand(String productBrand) {
+		return productRepository.findAllByProductBrand(productBrand);
+	}
+
+	@Override
+	public List<Product> findProductsByType(String type) {
+		return productRepository.findAllByType(type);
+	}
+
+	@Override
+	public List<Product> findProductsByColour(String colour) {
+		return productRepository.findAllByColour(colour);
+	}
+
 	
+
 	
 
 }

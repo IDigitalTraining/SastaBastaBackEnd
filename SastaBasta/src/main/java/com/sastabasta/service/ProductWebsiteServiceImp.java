@@ -1,5 +1,6 @@
 package com.sastabasta.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,11 @@ public class ProductWebsiteServiceImp implements ProductWebsiteService{
 	public void deleteProductWebsiteById(int webId) {
 		productWebsiteRepository.deleteById(webId);
 		
+	}
+
+	@Override
+	public List<ProductWebsite> findAllProduct() {
+		return (List<ProductWebsite>) productWebsiteRepository.findAll();
 	}
 
 }

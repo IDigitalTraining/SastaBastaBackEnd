@@ -19,37 +19,83 @@ public class Customer {
 	@OneToOne(mappedBy = "customer")
 	private Wishlist wishlist;
 	
+	
+	
+	
+	
+	public Customer(int custId, String custName, long mobileNo, String email, Wishlist wishlist) {
+		super();
+		this.custId = custId;
+		this.custName = custName;
+		this.mobileNo = mobileNo;
+		this.email = email;
+		this.wishlist = wishlist;
+	}
+
+
+
 	public int getCustId() {
 		return custId;
 	}
+
+
+
 	public void setCustId(int custId) {
 		this.custId = custId;
 	}
+
+
+
 	public String getCustName() {
 		return custName;
 	}
-	public void setCustNameString(String custNameString) {
-		this.custName = custNameString;
+
+
+
+	public void setCustName(String custName) {
+		this.custName = custName;
 	}
+
+
+
 	public long getMobileNo() {
 		return mobileNo;
 	}
+
+
+
 	public void setMobileNo(long mobileNo) {
 		this.mobileNo = mobileNo;
 	}
+
+
+
 	public String getEmail() {
 		return email;
 	}
+
+
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Customer(int custId, String custNameString, long mobileNo, String email) {
-		super();
-		this.custId = custId;
-		this.custName = custNameString;
-		this.mobileNo = mobileNo;
-		this.email = email;
+
+
+
+	public Wishlist getWishlist() {
+		return wishlist;
 	}
+
+
+
+	public void setWishlist(Wishlist wishlist) {
+		this.wishlist = wishlist;
+	}
+	
+	
+
+
+
 	public Customer() {
 		
 	} 

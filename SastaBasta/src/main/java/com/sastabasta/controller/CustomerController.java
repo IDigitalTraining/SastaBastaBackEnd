@@ -32,6 +32,11 @@ public class CustomerController {
 			return new ResponseEntity<Customer>(customerService.addCustomer(customer), HttpStatus.OK);
 	}
 	
+	@GetMapping("")
+	public ResponseEntity<List<Customer>> findAllCustomer(){
+		return new ResponseEntity<List<Customer>>(customerService.findAllCustomer(),HttpStatus.OK);
+	}
+	
 	@PutMapping("/edit-Customer")
 	public ResponseEntity<Customer> editCustomer( @RequestBody Customer customer) {
 		

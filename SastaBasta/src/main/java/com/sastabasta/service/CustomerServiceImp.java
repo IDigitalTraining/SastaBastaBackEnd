@@ -1,9 +1,12 @@
 package com.sastabasta.service;
 
+
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import com.sastabasta.entities.Customer;
 import com.sastabasta.exceptions.CustomerAlreadyPresentException;
@@ -45,6 +48,13 @@ public class CustomerServiceImp implements CustomerService{
 	@Override
 	public Customer editCustomer(Customer customer) {
 		return customerRepository.save(customer);
+	}
+
+
+	@Override
+	public List<Customer> findAllCustomer() {
+		
+		return (List<Customer>) customerRepository.findAll();
 	}
 
 

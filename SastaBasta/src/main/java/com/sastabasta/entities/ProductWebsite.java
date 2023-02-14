@@ -19,44 +19,109 @@ public class ProductWebsite {
 	@JoinColumn(name = "product_id", referencedColumnName = "productId")
 	private Product product;
 	
+	
+	
+	
 	public int getWebId() {
 		return webId;
 	}
+
+
+
+
 	public void setWebId(int webId) {
 		this.webId = webId;
 	}
+
+
+
+
 	public String getWebName() {
 		return webName;
 	}
+
+
+
+
 	public void setWebName(String webName) {
 		this.webName = webName;
 	}
+
+
+
+
 	public String getProductLink() {
 		return productLink;
 	}
+
+
+
+
 	public void setProductLink(String productLink) {
 		this.productLink = productLink;
 	}
+
+
+
+
 	public int getProductRating() {
 		return productRating;
 	}
+
+
+
+
 	public void setProductRating(int productRating) {
 		this.productRating = productRating;
 	}
+
+
+
+
 	public double getProductPrice() {
 		return productPrice;
 	}
+
+
+
+
 	public void setProductPrice(double productPrice) {
 		this.productPrice = productPrice;
 	}
+
+
+
+
 	public double getProductDiscount() {
 		return productDiscount;
 	}
+
+
+
+
 	public void setProductDiscount(double productDiscount) {
 		this.productDiscount = productDiscount;
 	}
+
+
+
+
+	public Product getProduct() {
+		return product;
+	}
+
+
+
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+
+
+
 	public ProductWebsite(int webId, String webName, String productLink, int productRating, double productPrice,
-			double productDiscount) {
+			double productDiscount, Product product) {
 		super();
 		this.webId = webId;
 		this.webName = webName;
@@ -64,7 +129,12 @@ public class ProductWebsite {
 		this.productRating = productRating;
 		this.productPrice = productPrice;
 		this.productDiscount = productDiscount;
+		this.product = product;
 	}
+
+
+
+
 	public ProductWebsite() {
 		
 	}
