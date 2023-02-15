@@ -16,6 +16,8 @@ public class Customer {
 	private String custName;
 	private long mobileNo;	
 	private String email;
+	private String password;
+	
 	
 	@JsonIgnore
 	@OneToOne(mappedBy = "customer")
@@ -25,14 +27,33 @@ public class Customer {
 	
 	
 	
-	public Customer(int custId, String custName, long mobileNo, String email, Wishlist wishlist) {
+	public Customer(int custId, String custName, long mobileNo, String email, Wishlist wishlist,String password) {
 		super();
 		this.custId = custId;
 		this.custName = custName;
 		this.mobileNo = mobileNo;
 		this.email = email;
 		this.wishlist = wishlist;
+		this.password=password;
 	}
+	
+	
+
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
 
 
 
