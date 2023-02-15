@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.sastabasta.entities.Customer;
+import com.sastabasta.entities.Product;
 import com.sastabasta.entities.ProductWebsite;
+import com.sastabasta.service.ProductService;
 import com.sastabasta.service.ProductWebsiteService;
 
 @RestController
@@ -23,6 +26,9 @@ import com.sastabasta.service.ProductWebsiteService;
 public class ProductWebsiteController {
 	@Autowired
 	ProductWebsiteService productWebsiteService;
+	
+	@Autowired
+	ProductService productService;
 	
 	@PostMapping("/addproductwebsite")
 	private ResponseEntity<ProductWebsite> addCustomer(@RequestBody ProductWebsite productWebsite) { 
@@ -42,7 +48,19 @@ public class ProductWebsiteController {
 	
 	@GetMapping("/getproductWebite/{webId}")
 	public ResponseEntity<Optional<ProductWebsite>> getByCustId(@PathVariable int webId) {
-		return new ResponseEntity<Optional<ProductWebsite>>(productWebsiteService.findProductWebsite(webId) ,HttpStatus.FOUND);
+		return new ResponseEntity<Optional<ProductWebsite>>(productWebsiteService.findProductWebsiteById(webId) ,HttpStatus.FOUND);
+	}
+	
+	@PutMapping("/{productWebsiteId}/assignProduct/{productIdId}")
+    private ResponseEntity<ProductWebsite> assignProductToProductWebsite(@PathVariable int productWebsiteId, @PathVariable int productId){
+		//Employee employee = managementService.findEmployeeById(employeeId).get();
+		ProductWebsite productWebsite= productWebsiteService.findProductWebsiteById(productWebsiteId).get();
+       // Manager manager = managementService.findManagerById(managerId).get();
+        Product product = productService.getProductById(productId).get();
+        //employee.setManager(manager);
+        productWebsite.setProduct(product);
+        //return new ResponseEntity<Employee>(managementService.saveEmployee(employee), HttpStatus.ACCEPTED);
+        return new ResponseEntity<ProductWebsite>(productWebsiteService.addProductWebsite(productWebsite),HttpStatus.ACCEPTED);
 	}
 	
 	

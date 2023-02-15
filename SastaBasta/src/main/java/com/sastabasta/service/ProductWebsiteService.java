@@ -9,7 +9,7 @@ public interface ProductWebsiteService {
 	
 	public ProductWebsite addProductWebsite(ProductWebsite productWebsite);
 	public ProductWebsite updateProductWebsite(ProductWebsite productWebsite);
-	public Optional<ProductWebsite> findProductWebsite(int webId);
+	public Optional<ProductWebsite> findProductWebsiteById(int webId);
 	public void deleteProductWebsiteById(int webId);
 	public List<ProductWebsite> findAllProduct();
 }

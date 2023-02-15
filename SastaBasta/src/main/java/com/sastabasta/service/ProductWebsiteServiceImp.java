@@ -27,7 +27,7 @@ public class ProductWebsiteServiceImp implements ProductWebsiteService{
 	}
 
 	@Override
-	public Optional<ProductWebsite> findProductWebsite(int webId) {
+	public Optional<ProductWebsite> findProductWebsiteById(int webId) {
 		
 		return productWebsiteRepository.findById(webId);
 	}
