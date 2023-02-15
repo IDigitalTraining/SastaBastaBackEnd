@@ -9,8 +9,11 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+
 import com.sastabasta.entities.Product;
 import com.sastabasta.entities.Wishlist;
+import com.sastabasta.inputDto.ProductInputDto;
 import com.sastabasta.repository.ProductRepository;
 import com.sastabasta.repository.WishlistRepository;
 @Service
@@ -75,6 +78,25 @@ public class ProductServiceImp implements ProductService{
 	@Override
 	public List<Product> findProductsByColour(String colour) {
 		return productRepository.findAllByColour(colour);
+	}
+
+	@Override
+	public Product addProductDto(ProductInputDto productDto) {
+		
+		Product productInputDto =new Product(); 
+
+	
+		productInputDto.setProductId(productDto.getProductId());
+		
+		productInputDto.setProductName(productDto.getProductName());
+		productInputDto.setProductBrand(productDto.getProductBrand());
+		productInputDto.setType(productDto.getType());
+		productInputDto.setColour(productDto.getColour());
+		productInputDto.setImage(productDto.getImage());
+		
+	
+		//return restaurantRepository.save(restaurantInputDto);
+		return productRepository.save(productInputDto);
 	}
 
 	

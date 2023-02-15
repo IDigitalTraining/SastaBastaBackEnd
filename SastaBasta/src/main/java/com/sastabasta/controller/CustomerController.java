@@ -32,12 +32,12 @@ public class CustomerController {
 			return new ResponseEntity<Customer>(customerService.addCustomer(customer), HttpStatus.OK);
 	}
 	
-	@GetMapping("")
+	@GetMapping("/allcustomer")
 	public ResponseEntity<List<Customer>> findAllCustomer(){
 		return new ResponseEntity<List<Customer>>(customerService.findAllCustomer(),HttpStatus.OK);
 	}
 	
-	@PutMapping("/edit-Customer")
+	@PutMapping("/editcustomer")
 	public ResponseEntity<Customer> editCustomer( @RequestBody Customer customer) {
 		
 		return new ResponseEntity<Customer>(customerService.editCustomer(customer), HttpStatus.ACCEPTED);

@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Customer {
 	
 	@Id
+	
 	private int custId;
 	private String custName;
 	private long mobileNo;	
