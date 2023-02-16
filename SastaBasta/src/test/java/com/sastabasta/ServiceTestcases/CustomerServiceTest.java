@@ -96,11 +96,11 @@ public class CustomerServiceTest {
 		
 		Mockito.doNothing().when(customerRepository).deleteById(1);
 
-		String result =customerService.deleteById(1);
+		customerService.deleteById(1);
 
 		verify(customerRepository, times(1)).deleteById(1);
 		
-		assertEquals(result, "Customer with id 1 is deleted");
+		
 		
 		
 	}
