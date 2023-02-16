@@ -39,7 +39,6 @@ public class CustomerController {
 	
 	@PutMapping("/editCustomer")
 	public ResponseEntity<Customer> editCustomer( @RequestBody Customer customer) {
-		
 		return new ResponseEntity<Customer>(customerService.editCustomer(customer), HttpStatus.ACCEPTED);
 	}
 	

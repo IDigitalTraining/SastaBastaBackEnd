@@ -71,9 +71,8 @@ public class ProductController {
 	 @PutMapping("/{productId}/addWishlist/{wishlistId}")
 	    private ResponseEntity<Product> addProductToWishlist(@PathVariable int productId, @PathVariable int wishlistId){
 		 
-		
+		 
 		 Product product = productService.getProductById(productId).get();
-	       
 	        Wishlist wishlist=wishlistService.getWishlistById(wishlistId).get();
 	       
 	        product.getWishlist().add(wishlist);

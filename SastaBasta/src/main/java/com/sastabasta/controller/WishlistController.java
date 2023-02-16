@@ -32,7 +32,6 @@ public class WishlistController {
 	
 	@PostMapping("/addWishlist")
 	private ResponseEntity<Wishlist> addWishlist( @RequestBody Wishlist wishlist) { 
-		
 			return new ResponseEntity<Wishlist>(wishlistService.addWishlist(wishlist) , HttpStatus.OK);
 	}
 	

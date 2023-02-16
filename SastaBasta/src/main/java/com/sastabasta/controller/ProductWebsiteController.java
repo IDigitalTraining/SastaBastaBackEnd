@@ -35,7 +35,6 @@ public class ProductWebsiteController {
 	
 	@PutMapping("/editCustomer")
 	public ResponseEntity<ProductWebsite> editCustomer(@RequestBody ProductWebsite productWebsite) {
-		
 		return new ResponseEntity<ProductWebsite>(productWebsiteService.addProductWebsite(productWebsite) , HttpStatus.OK);
 	}
 	
