@@ -26,29 +26,29 @@ public class CustomerController {
 	@Autowired
 	CustomerService customerService;
 	
-	@PostMapping("/addcustomer")
+	@PostMapping("/addCustomer")
 	private ResponseEntity<Customer> addCustomer( @RequestBody Customer customer) { 
 		
 			return new ResponseEntity<Customer>(customerService.addCustomer(customer), HttpStatus.OK);
 	}
 	
-	@GetMapping("/allcustomer")
+	@GetMapping("/allCustomer")
 	public ResponseEntity<List<Customer>> findAllCustomer(){
 		return new ResponseEntity<List<Customer>>(customerService.findAllCustomer(),HttpStatus.OK);
 	}
 	
-	@PutMapping("/editcustomer")
+	@PutMapping("/editCustomer")
 	public ResponseEntity<Customer> editCustomer( @RequestBody Customer customer) {
 		
 		return new ResponseEntity<Customer>(customerService.editCustomer(customer), HttpStatus.ACCEPTED);
 	}
 	
-	@DeleteMapping("deletebyid/{id}")
+	@DeleteMapping("deleteById/{id}")
 	public void deleteCustomerById(@PathVariable int id){
 		customerService.deleteById(id);
 	}
 	
-	@GetMapping("/getcustomer/{custId}")
+	@GetMapping("/getCustomer/{custId}")
 	public ResponseEntity<Optional<Customer>> getByCustId(@PathVariable int custId) {
 		return new ResponseEntity<Optional<Customer>>(customerService.getCustomerById(custId),HttpStatus.FOUND);
 	}

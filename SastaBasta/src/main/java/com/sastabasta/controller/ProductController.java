@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,13 +32,13 @@ public class ProductController {
 	@Autowired
 	WishlistService wishlistService;
 	
-	@PostMapping("/addproduct")
+	@PostMapping("/addProduct")
 	public ResponseEntity<Product> addProduct( @RequestBody Product product) { 
 		
 			return new ResponseEntity<Product>(productService.addProduct(product), HttpStatus.OK);
 	}
 	
-	@GetMapping("/allproducts")
+	@GetMapping("/allProducts")
 	public ResponseEntity<List<Product>> getAllPrduct(){
 		return new ResponseEntity<List<Product>>(productService.getAllProduct(),HttpStatus.OK);
 	}
@@ -84,6 +85,11 @@ public class ProductController {
 			
 			return new ResponseEntity<Product>(productService.addProductDto(productInputDto), HttpStatus.OK);
 		}
+	 
+	 @DeleteMapping("/deleteProduct/{productId}")
+	 void deleteProdcut (@PathVariable int productId){
+		 productService.deleteProduct(productId);
+	 }
 		
 		
 	

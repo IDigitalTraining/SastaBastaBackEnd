@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import com.sastabasta.entities.Customer;
 import com.sastabasta.entities.Product;
 import com.sastabasta.entities.ProductWebsite;
 import com.sastabasta.service.ProductService;
@@ -30,36 +28,36 @@ public class ProductWebsiteController {
 	@Autowired
 	ProductService productService;
 	
-	@PostMapping("/addproductwebsite")
+	@PostMapping("/addProductWebsite")
 	private ResponseEntity<ProductWebsite> addCustomer(@RequestBody ProductWebsite productWebsite) { 
 		return new ResponseEntity<ProductWebsite>(productWebsiteService.addProductWebsite(productWebsite) , HttpStatus.OK);
 	}
 	
-	@PutMapping("/edit-Customer")
+	@PutMapping("/editCustomer")
 	public ResponseEntity<ProductWebsite> editCustomer(@RequestBody ProductWebsite productWebsite) {
 		
 		return new ResponseEntity<ProductWebsite>(productWebsiteService.addProductWebsite(productWebsite) , HttpStatus.OK);
 	}
 	
-	@DeleteMapping("deletebyid/{id}")
+	@DeleteMapping("deleteById/{id}")
 	public void deleteProductWebsiteById(@PathVariable int id){
 		productWebsiteService.deleteProductWebsiteById(id);
 	}
 	
-	@GetMapping("/getproductWebite/{webId}")
+	@GetMapping("/getProductWebite/{webId}")
 	public ResponseEntity<Optional<ProductWebsite>> getByCustId(@PathVariable int webId) {
 		return new ResponseEntity<Optional<ProductWebsite>>(productWebsiteService.findProductWebsiteById(webId) ,HttpStatus.FOUND);
 	}
 	
 	@PutMapping("/{productWebsiteId}/assignProduct/{productIdId}")
     private ResponseEntity<ProductWebsite> assignProductToProductWebsite(@PathVariable int productWebsiteId, @PathVariable int productId){
-		//Employee employee = managementService.findEmployeeById(employeeId).get();
+		
 		ProductWebsite productWebsite= productWebsiteService.findProductWebsiteById(productWebsiteId).get();
-       // Manager manager = managementService.findManagerById(managerId).get();
+    
         Product product = productService.getProductById(productId).get();
-        //employee.setManager(manager);
+     
         productWebsite.setProduct(product);
-        //return new ResponseEntity<Employee>(managementService.saveEmployee(employee), HttpStatus.ACCEPTED);
+       
         return new ResponseEntity<ProductWebsite>(productWebsiteService.addProductWebsite(productWebsite),HttpStatus.ACCEPTED);
 	}
 	

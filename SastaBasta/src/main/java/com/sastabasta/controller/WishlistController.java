@@ -30,13 +30,13 @@ public class WishlistController {
 	@Autowired
 	CustomerService customerService;
 	
-	@PostMapping("/addwishlist")
+	@PostMapping("/addWishlist")
 	private ResponseEntity<Wishlist> addWishlist( @RequestBody Wishlist wishlist) { 
 		
 			return new ResponseEntity<Wishlist>(wishlistService.addWishlist(wishlist) , HttpStatus.OK);
 	}
 	
-	@DeleteMapping("deletebyid/{id}")
+	@DeleteMapping("deleteById/{id}")
 	public void deleteWishlistById(@PathVariable int id){
 		wishlistService.deleteWishlist(id);
 	}
@@ -47,15 +47,12 @@ public class WishlistController {
 	 * }
 	 */
 	
-	@PutMapping("/{wishlistId}/setcustomer/{customerId}")
+	@PutMapping("/{wishlistId}/setCustomer/{customerId}")
 	private ResponseEntity<Wishlist> addWishListToCustomer(@PathVariable int wishlistId, @PathVariable int customerId){
-		//Project project = managementService.findProjectById(projectId).get();
+		
 		Wishlist wishlist =wishlistService.getWishlistById(wishlistId).get();
-		//Manager manager = managementService.findManagerById(managerId).get();
 		Customer customer =customerService.getCustomerById(customerId).get();
-		//project.setManager(manager);
 		wishlist.setCustomer(customer);
-    	//return new ResponseEntity<Project>(managementService.saveProject(project), HttpStatus.ACCEPTED);
     	return new ResponseEntity<Wishlist>(wishlistService.addWishlist(wishlist),HttpStatus.OK);
 	}
 
