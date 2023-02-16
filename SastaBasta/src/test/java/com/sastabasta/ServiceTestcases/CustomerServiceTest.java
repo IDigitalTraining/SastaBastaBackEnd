@@ -68,16 +68,17 @@ public class CustomerServiceTest {
 		
 		Mockito.when(customerRepository.findById(1)).thenReturn(Optional.of(customer));
 		
-		Customer updatedCustomer = new Customer(1,"Deepali Kosta",7662345798L,"deepali1234@gmail.com","3456gffsf" );
+		//Customer updatedCustomer = new Customer(1,"Deepali Kosta",7662345798L,"deepali1234@gmail.com","3456gffsf" );
 		
+		customer.setCustName("Deepali Kosta");
+
 		
-		Customer result =customerService.editCustomer(1, updatedCustomer);
+		Customer result =customerService.editCustomer(customer);
 		
 		assertEquals("Deepali Kosta", result.getCustName());
-		assertEquals(1, result.getCustId());
-		assertEquals("deepali1234@gmail.com", result.getEmail());
-		assertEquals(7662345798L, result.getMobileNo());
-		assertEquals("3456gffsf", result.getPassword());
+		assertEquals("deepali@gmail.com", result.getEmail());
+		assertEquals(7440378897L, result.getMobileNo());
+		assertEquals("1234rgfsh", result.getPassword());
 	}
 
 	

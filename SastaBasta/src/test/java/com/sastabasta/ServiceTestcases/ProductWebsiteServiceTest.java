@@ -84,21 +84,21 @@ public class ProductWebsiteServiceTest {
 		
 		Mockito.when(productWebsiteRepository.findById(1)).thenReturn(Optional.of(productWebsite));
 		
-		ProductWebsite updatedProductWebsite = new ProductWebsite();
+		
 	
 		productWebsite.setWebName("Flipkart");
 		productWebsite.setProductLink("xyz");
 		productWebsite.setProductRating(4);
-		productWebsite.setProductPrice(350);
-		productWebsite.setProductDiscount(1500);
+		productWebsite.setProductPrice(450);
+		productWebsite.setProductDiscount(1800);
 		
-		ProductWebsite result =productService.updateProductWebsite(updatedProductWebsite);
+		ProductWebsite result =productService.updateProductWebsite(productWebsite);
 		
 		assertEquals("Flipkart", result.getWebName());
 		assertEquals("xyz", result.getProductLink());
 		assertEquals(4, result.getProductRating());
-		assertEquals(350, result.getProductPrice());
-		assertEquals(1500, result.getProductDiscount());
+		assertEquals(450, result.getProductPrice());
+		assertEquals(1800, result.getProductDiscount());
 	}
 
 	
