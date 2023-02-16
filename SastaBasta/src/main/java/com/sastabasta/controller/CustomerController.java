@@ -18,6 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.sastabasta.entities.Customer;
+import com.sastabasta.exceptions.CustomerAlreadyExiststException;
+import com.sastabasta.exceptions.CustomerNotFoundException;
+import com.sastabasta.exceptions.EmptyCustomerListException;
+import com.sastabasta.exceptions.InvalidMobileNumberException;
 import com.sastabasta.service.CustomerService;
 
 @RestController
@@ -27,28 +31,28 @@ public class CustomerController {
 	CustomerService customerService;
 	
 	@PostMapping("/addCustomer")
-	private ResponseEntity<Customer> addCustomer( @RequestBody Customer customer) { 
+	private ResponseEntity<Customer> addCustomer( @RequestBody Customer customer) throws Exception { 
 		
 			return new ResponseEntity<Customer>(customerService.addCustomer(customer), HttpStatus.OK);
 	}
 	
 	@GetMapping("/allCustomer")
-	public ResponseEntity<List<Customer>> findAllCustomer(){
+	public ResponseEntity<List<Customer>> findAllCustomer() throws EmptyCustomerListException{
 		return new ResponseEntity<List<Customer>>(customerService.findAllCustomer(),HttpStatus.OK);
 	}
 	
-	@PutMapping("/editCustomer")
-	public ResponseEntity<Customer> editCustomer( @RequestBody Customer customer) {
-		return new ResponseEntity<Customer>(customerService.editCustomer(customer), HttpStatus.ACCEPTED);
+	@PutMapping("/editCustomer/{customerId}")
+	public ResponseEntity<Customer> editCustomer( @RequestBody Customer customer,@PathVariable int customerId) throws CustomerNotFoundException {
+		return new ResponseEntity<Customer>(customerService.editCustomer(customerId,customer), HttpStatus.ACCEPTED);
 	}
 	
 	@DeleteMapping("deleteById/{id}")
-	public void deleteCustomerById(@PathVariable int id){
+	public void deleteCustomerById(@PathVariable int id) throws CustomerNotFoundException{
 		customerService.deleteById(id);
 	}
 	
 	@GetMapping("/getCustomer/{custId}")
-	public ResponseEntity<Optional<Customer>> getByCustId(@PathVariable int custId) {
-		return new ResponseEntity<Optional<Customer>>(customerService.getCustomerById(custId),HttpStatus.FOUND);
+	public ResponseEntity<Customer> getByCustId(@PathVariable int custId) throws CustomerNotFoundException {
+		return new ResponseEntity<Customer>(customerService.getCustomerById(custId),HttpStatus.FOUND);
 	}
 }
