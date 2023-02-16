@@ -20,6 +20,7 @@ import com.sastabasta.service.WishlistService;
 @SpringBootTest
 public class WishlistServiceTest {
 
+
 	@Autowired
 	private WishlistService wishlistService;
 
@@ -42,23 +43,22 @@ public class WishlistServiceTest {
 
 		assertThat(wishlistService.addWishlist(wishlist)).isEqualTo(wishlist);
 	}
-	
+
 	@Test
 	public void deleteWishListByIdTest() {
 		Mockito.when(wishlistRepository.findById(1)).thenReturn(Optional.of(wishlist));
-		
+
 		Mockito.doNothing().when(wishlistRepository).deleteById(1);
 
 		wishlistService.deleteWishlist(1);
-		
-	}
-	
-	@Test
-	public void getWishListByIdTest() {
-		
-		Mockito.when(wishlistRepository.findById(1)).thenReturn(Optional.of(wishlist));
-		
-		assertThat(wishlistService.getWishlistById(1)).isEqualTo(Optional.of(wishlist));
+
 	}
 
+	@Test
+	public void getWishListByIdTest() {
+
+		Mockito.when(wishlistRepository.findById(1)).thenReturn(Optional.of(wishlist));
+
+		assertThat(wishlistService.getWishlistById(1)).isEqualTo(Optional.of(wishlist));
+	}
 }

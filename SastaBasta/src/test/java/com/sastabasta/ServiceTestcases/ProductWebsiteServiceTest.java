@@ -34,9 +34,8 @@ public class ProductWebsiteServiceTest {
 	private ProductWebsiteRepository productWebsiteRepository;
 
 	private ProductWebsite productWebsite;
-	
+
 	private ProductWebsite productWebsite1;
-	
 
 	@BeforeEach
 	public void ProductWebsiteTestSetup() {
@@ -48,7 +47,7 @@ public class ProductWebsiteServiceTest {
 		productWebsite.setProductRating(4);
 		productWebsite.setProductPrice(400);
 		productWebsite.setProductDiscount(1000);
-		
+
 		productWebsite1 = new ProductWebsite();
 		productWebsite.setWebId(2);
 		productWebsite.setWebName("Amazon");
@@ -65,35 +64,33 @@ public class ProductWebsiteServiceTest {
 
 		assertThat(productService.addProductWebsite(productWebsite)).isEqualTo(productWebsite);
 	}
-	
+
 	@Test
-	public void getAllProductWebsiteTest()  {
+	public void getAllProductWebsiteTest() {
 		List<ProductWebsite> productWebsiteList = new ArrayList<>();
-		
+
 		productWebsiteList.add(productWebsite);
 		productWebsiteList.add(productWebsite1);
-		
+
 		Mockito.when(productWebsiteRepository.findAll()).thenReturn(productWebsiteList);
-		
+
 		assertThat(productService.findAllProduct()).isEqualTo(productWebsiteList);
 	}
-	
+
 	@Test
 	public void updateProductWebsiteTest() {
 		Mockito.when(productWebsiteRepository.save(productWebsite)).thenReturn(productWebsite);
-		
+
 		Mockito.when(productWebsiteRepository.findById(1)).thenReturn(Optional.of(productWebsite));
-		
-		
-	
+
 		productWebsite.setWebName("Flipkart");
 		productWebsite.setProductLink("xyz");
 		productWebsite.setProductRating(4);
 		productWebsite.setProductPrice(450);
 		productWebsite.setProductDiscount(1800);
-		
-		ProductWebsite result =productService.updateProductWebsite(productWebsite);
-		
+
+		ProductWebsite result = productService.updateProductWebsite(productWebsite);
+
 		assertEquals("Flipkart", result.getWebName());
 		assertEquals("xyz", result.getProductLink());
 		assertEquals(4, result.getProductRating());
@@ -101,28 +98,24 @@ public class ProductWebsiteServiceTest {
 		assertEquals(1800, result.getProductDiscount());
 	}
 
-	
 	@Test
 	public void getProductWebsiteByIdTest() {
-		
+
 		Mockito.when(productWebsiteRepository.findById(1)).thenReturn(Optional.of(productWebsite));
-		
+
 		assertThat(productService.findProductWebsiteById(1)).isEqualTo(Optional.of(productWebsite));
 	}
-	
+
 	@Test
 	public void deleteProductWebsiteByIdTest() {
 		Mockito.when(productWebsiteRepository.findById(1)).thenReturn(Optional.of(productWebsite));
-		
+
 		Mockito.doNothing().when(productWebsiteRepository).deleteById(1);
 
 		productService.deleteProductWebsiteById(1);
 
 		verify(productWebsiteRepository, times(1)).deleteById(1);
-		
-		
-		
-		
+
 	}
 
 }

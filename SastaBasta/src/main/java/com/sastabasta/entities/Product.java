@@ -6,6 +6,8 @@ package com.sastabasta.entities;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -19,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Product {
 	@Id
 //	https://youtu.be/oTJ89wcz5Ec
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int productId;
 	private String productName;
 	private String productBrand;

@@ -1,6 +1,8 @@
 package com.sastabasta.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
@@ -12,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Customer {
 	
 	@Id
-	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int custId;
 	private String custName;
 	private long mobileNo;	
@@ -29,13 +31,13 @@ public class Customer {
 	
 	
 	
-	public Customer(int custId, String custName, long mobileNo, String email, Wishlist wishlist,String password) {
+	public Customer(int custId, String custName, long mobileNo, String email,String password) {
 		super();
 		this.custId = custId;
 		this.custName = custName;
 		this.mobileNo = mobileNo;
 		this.email = email;
-		this.wishlist = wishlist;
+		//this.wishlist = wishlist;
 		this.password=password;
 	}
 	

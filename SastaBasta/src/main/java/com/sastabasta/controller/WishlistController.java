@@ -51,7 +51,7 @@ public class WishlistController {
 	private ResponseEntity<Wishlist> addWishListToCustomer(@PathVariable int wishlistId, @PathVariable int customerId) throws CustomerNotFoundException{
 		
 		Wishlist wishlist =wishlistService.getWishlistById(wishlistId).get();
-		Customer customer =customerService.getCustomerById(customerId);
+		Customer customer =customerService.getCustomerById(customerId).get();
 		wishlist.setCustomer(customer);
     	return new ResponseEntity<Wishlist>(wishlistService.addWishlist(wishlist),HttpStatus.OK);
 	}

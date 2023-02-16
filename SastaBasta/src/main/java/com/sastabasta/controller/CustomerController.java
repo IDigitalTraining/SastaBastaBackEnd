@@ -52,7 +52,7 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/getCustomer/{custId}")
-	public ResponseEntity<Customer> getByCustId(@PathVariable int custId) throws CustomerNotFoundException {
-		return new ResponseEntity<Customer>(customerService.getCustomerById(custId),HttpStatus.FOUND);
+	public ResponseEntity<Optional<Customer>> getByCustId(@PathVariable int custId) throws CustomerNotFoundException {
+		return new ResponseEntity<Optional<Customer>>(customerService.getCustomerById(custId),HttpStatus.FOUND);
 	}
 }
