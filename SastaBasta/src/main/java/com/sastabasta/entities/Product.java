@@ -24,7 +24,7 @@ public class Product {
 	private String productBrand;
 	private String type;
 	private String colour;
-	private byte[] image;
+	private String image;
 	
 	@ManyToMany()
 	@JoinTable(name = "product_wishlist", joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "productId"), inverseJoinColumns = @JoinColumn(name = "wishlist_id", referencedColumnName = "wishlistId"))
@@ -74,11 +74,11 @@ public class Product {
 		this.colour = colour;
 	}
 
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
@@ -98,7 +98,7 @@ public class Product {
 		this.productWebsites = productWebsites;
 	}
 
-	public Product(int productId, String productName, String productBrand, String type, String colour, byte[] image,
+	public Product(int productId, String productName, String productBrand, String type, String colour, String image,
 			List<Wishlist> wishlist, List<ProductWebsite> productWebsites) {
 		super();
 		this.productId = productId;

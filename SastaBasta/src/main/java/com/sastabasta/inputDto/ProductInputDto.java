@@ -7,7 +7,7 @@ public class ProductInputDto {
 	private String productBrand;
 	private String type;
 	private String colour;
-	private byte[] image;
+	private String image;
 	public int getProductId() {
 		return productId;
 	}
@@ -38,10 +38,10 @@ public class ProductInputDto {
 	public void setColour(String colour) {
 		this.colour = colour;
 	}
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 	
