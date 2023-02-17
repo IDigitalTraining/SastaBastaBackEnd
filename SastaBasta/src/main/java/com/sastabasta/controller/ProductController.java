@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sastabasta.entities.Product;
+import com.sastabasta.entities.ProductWebsite;
 import com.sastabasta.entities.Wishlist;
 import com.sastabasta.inputDto.ProductInputDto;
 import com.sastabasta.service.ProductService;
+import com.sastabasta.service.ProductWebsiteService;
 import com.sastabasta.service.WishlistService;
 
 
@@ -31,6 +34,8 @@ public class ProductController {
 	ProductService productService;
 	@Autowired
 	WishlistService wishlistService;
+	@Autowired
+	ProductWebsiteService productWebsiteService;
 	
 	@PostMapping("/addProduct")
 	public ResponseEntity<Product> addProduct( @RequestBody Product product) { 
@@ -45,7 +50,7 @@ public class ProductController {
 	
 	
 	@GetMapping("/filter")
-	public ResponseEntity<List<Product>> filterProducts(@RequestBody Map<String, String> map){		
+	public ResponseEntity<List<Product>> filterProducts(@RequestParam Map<String, String> map){		
 		return new ResponseEntity<List<Product>>(productService.filterProduct(map),HttpStatus.OK);
 	}
 	
@@ -89,7 +94,19 @@ public class ProductController {
 	 void deleteProdcut (@PathVariable int productId){
 		 productService.deleteProduct(productId);
 	 }
-		
+	 @PutMapping("/{productWebsiteId}/assignProduct/{productId}")
+	    private ResponseEntity<ProductWebsite> assignProductToProductWebsite(@PathVariable int productWebsiteId, @PathVariable int productId){
+			
+			
+	    
+	        Product product = productService.getProductById(productId).get();
+	        ProductWebsite productWebsite= productWebsiteService.findProductWebsiteById(productWebsiteId).get();
+	     
+	       //productWebsite.getProduct().add(product);
+	       product.getProductWebsite().add(productWebsite);
+	       
+	        return new ResponseEntity<ProductWebsite>(productWebsiteService.addProductWebsite(productWebsite),HttpStatus.OK);
+		}	
 		
 	
 

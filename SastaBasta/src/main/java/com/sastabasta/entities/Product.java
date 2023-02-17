@@ -1,8 +1,5 @@
 package com.sastabasta.entities;
 
-
-
-
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -16,27 +13,32 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
-@Entity 
+@Entity
 public class Product {
 	@Id
 //	https://youtu.be/oTJ89wcz5Ec
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int productId;
 	private String productName;
 	private String productBrand;
 	private String type;
 	private String colour;
 	private String image;
-	
+
 	@ManyToMany()
 	@JoinTable(name = "product_wishlist", joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "productId"), inverseJoinColumns = @JoinColumn(name = "wishlist_id", referencedColumnName = "wishlistId"))
 	private List<Wishlist> wishlist;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "product")
-	private List<ProductWebsite> productWebsites;
 
+	@ManyToMany()
+	@JoinTable(name = "product_product_website", joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "productId"), inverseJoinColumns = @JoinColumn(name = "product_product_website_id", referencedColumnName = "webId"))
+	private List<ProductWebsite> productWebsite;
+
+	/*
+	 * @JsonIgnore
+	 * 
+	 * @OneToMany(mappedBy = "product") private List<ProductWebsite>
+	 * productWebsites;
+	 */
 	public int getProductId() {
 		return productId;
 	}
@@ -93,16 +95,8 @@ public class Product {
 		this.wishlist = wishlist;
 	}
 
-	public List<ProductWebsite> getProductWebsites() {
-		return productWebsites;
-	}
-
-	public void setProductWebsites(List<ProductWebsite> productWebsites) {
-		this.productWebsites = productWebsites;
-	}
-
 	public Product(int productId, String productName, String productBrand, String type, String colour, String image,
-			List<Wishlist> wishlist, List<ProductWebsite> productWebsites) {
+			List<Wishlist> wishlist, List<ProductWebsite> productWebsite) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
@@ -111,17 +105,19 @@ public class Product {
 		this.colour = colour;
 		this.image = image;
 		this.wishlist = wishlist;
-		this.productWebsites = productWebsites;
+		this.productWebsite = productWebsite;
+	}
+
+	public List<ProductWebsite> getProductWebsite() {
+		return productWebsite;
+	}
+
+	public void setProductWebsite(List<ProductWebsite> productWebsite) {
+		this.productWebsite = productWebsite;
 	}
 
 	public Product() {
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
+
 }

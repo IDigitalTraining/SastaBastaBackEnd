@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.sastabasta.entities.Customer;
+import com.sastabasta.entities.Product;
+import com.sastabasta.entities.Wishlist;
 import com.sastabasta.exceptions.CustomerAlreadyExiststException;
 import com.sastabasta.exceptions.CustomerNotFoundException;
 import com.sastabasta.exceptions.EmptyCustomerListException;
@@ -54,5 +56,13 @@ public class CustomerController {
 	@GetMapping("/getCustomer/{custId}")
 	public ResponseEntity<Optional<Customer>> getByCustId(@PathVariable int custId) throws CustomerNotFoundException {
 		return new ResponseEntity<Optional<Customer>>(customerService.getCustomerById(custId),HttpStatus.FOUND);
+	}
+	@GetMapping("/getAllDetails/{custId}")
+	public List<Product> getAllDetails(@PathVariable int custId){
+		 List<Product> product= customerService.getCustomerById(custId).get().getWishlist().getProduct();
+		
+		
+		return product;
+		
 	}
 }

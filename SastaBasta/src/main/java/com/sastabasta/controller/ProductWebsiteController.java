@@ -1,5 +1,6 @@
 package com.sastabasta.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,17 +49,7 @@ public class ProductWebsiteController {
 		return new ResponseEntity<Optional<ProductWebsite>>(productWebsiteService.findProductWebsiteById(webId) ,HttpStatus.FOUND);
 	}
 	
-	@PutMapping("/{productWebsiteId}/assignProduct/{productIdId}")
-    private ResponseEntity<ProductWebsite> assignProductToProductWebsite(@PathVariable int productWebsiteId, @PathVariable int productId){
-		
-		ProductWebsite productWebsite= productWebsiteService.findProductWebsiteById(productWebsiteId).get();
-    
-        Product product = productService.getProductById(productId).get();
-     
-        productWebsite.setProduct(product);
-       
-        return new ResponseEntity<ProductWebsite>(productWebsiteService.addProductWebsite(productWebsite),HttpStatus.ACCEPTED);
-	}
+	
 	
 	
 
