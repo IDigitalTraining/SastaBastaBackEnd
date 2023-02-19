@@ -58,5 +58,11 @@ public class CustomerServiceImp implements CustomerService{
 	}
 
 
+	@Override
+	public Customer findByEmailAndPassword(String email, String password) {
+		return customerRepository.findByEmailAndPassword(email, password);
+	}
+
+
 	
 }

@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sastabasta.entities.Customer;
 import com.sastabasta.entities.Product;
 import com.sastabasta.entities.ProductWebsite;
 import com.sastabasta.entities.Wishlist;
+import com.sastabasta.exceptions.CustomerNotFoundException;
 import com.sastabasta.inputDto.ProductInputDto;
 import com.sastabasta.service.ProductService;
 import com.sastabasta.service.ProductWebsiteService;
@@ -96,19 +98,8 @@ public class ProductController {
 	 void deleteProdcut (@PathVariable int productId){
 		 productService.deleteProduct(productId);
 	 }
-	 @PutMapping("/{productWebsiteId}/assignProduct/{productId}")
-	    private ResponseEntity<ProductWebsite> assignProductToProductWebsite(@PathVariable int productWebsiteId, @PathVariable int productId){
-			
-			
-	    
-	        Product product = productService.getProductById(productId).get();
-	        ProductWebsite productWebsite= productWebsiteService.findProductWebsiteById(productWebsiteId).get();
-	     
-	       //productWebsite.getProduct().add(product);
-	       product.getProductWebsite().add(productWebsite);
-	       
-	        return new ResponseEntity<ProductWebsite>(productWebsiteService.addProductWebsite(productWebsite),HttpStatus.OK);
-		}	
+	 
+	
 		
 	
 

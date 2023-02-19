@@ -12,5 +12,6 @@ import com.sastabasta.entities.Customer;
 public interface CustomerRepository extends CrudRepository<Customer, Integer> {	  
 	
 	public Optional<Customer> findByEmail(String email);
+	public Customer findByEmailAndPassword(String email,String password);
 
 }

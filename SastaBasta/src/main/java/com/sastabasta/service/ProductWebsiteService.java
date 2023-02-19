@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.Optional;
 
 import com.sastabasta.entities.ProductWebsite;
+import com.sastabasta.inputDto.ProductWebsiteInputDto;
 
 public interface ProductWebsiteService {
 	
-	public ProductWebsite addProductWebsite(ProductWebsite productWebsite);
+	public ProductWebsite addProductWebsite(ProductWebsiteInputDto productWebsiteInputDto);
 	public ProductWebsite updateProductWebsite(ProductWebsite productWebsite);
 	public Optional<ProductWebsite> findProductWebsiteById(int webId);
 	public void deleteProductWebsiteById(int webId);
 	public List<ProductWebsite> findAllProduct();
+	
+	
 }

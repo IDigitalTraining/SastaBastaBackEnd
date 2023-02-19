@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.sastabasta.entities.Customer;
 import com.sastabasta.entities.Product;
 import com.sastabasta.entities.Wishlist;
@@ -66,5 +65,10 @@ public class CustomerController {
 		
 		return product;
 		
+	}
+	
+	@PostMapping("/login")
+	public ResponseEntity<Customer> checkLogin(@RequestBody Customer customer) {
+		return new ResponseEntity<Customer>(customerService.findByEmailAndPassword(customer.getEmail(),customer.getPassword()), HttpStatus.OK);
 	}
 }

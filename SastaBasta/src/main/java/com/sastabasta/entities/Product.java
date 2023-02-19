@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -17,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Product {
 	@Id
 //	https://youtu.be/oTJ89wcz5Ec
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int productId;
 	private String productName;
 	private String productBrand;
@@ -29,9 +30,9 @@ public class Product {
 	@JoinTable(name = "product_wishlist", joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "productId"), inverseJoinColumns = @JoinColumn(name = "wishlist_id", referencedColumnName = "wishlistId"))
 	private List<Wishlist> wishlist;
 
-	@ManyToMany()
-	@JoinTable(name = "product_product_website", joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "productId"), inverseJoinColumns = @JoinColumn(name = "product_product_website_id", referencedColumnName = "webId"))
-	private List<ProductWebsite> productWebsite;
+//	@ManyToMany()
+//	@JoinTable(name = "product_product_website", joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "productId"), inverseJoinColumns = @JoinColumn(name = "product_product_website_id", referencedColumnName = "webId"))
+//	private List<ProductWebsite> productWebsite;
 
 	/*
 	 * @JsonIgnore
@@ -39,6 +40,11 @@ public class Product {
 	 * @OneToMany(mappedBy = "product") private List<ProductWebsite>
 	 * productWebsites;
 	 */
+	
+	@JsonIgnore
+	@OneToOne(mappedBy = "product")
+	private ProductWebsite productWebsite;
+
 	public int getProductId() {
 		return productId;
 	}
@@ -95,10 +101,17 @@ public class Product {
 		this.wishlist = wishlist;
 	}
 
-	public Product(int productId, String productName, String productBrand, String type, String colour, String image,
-			List<Wishlist> wishlist, List<ProductWebsite> productWebsite) {
+	public ProductWebsite getProductWebsite() {
+		return productWebsite;
+	}
+
+	public void setProductWebsite(ProductWebsite productWebsite) {
+		this.productWebsite = productWebsite;
+	}
+
+	public Product(String productName, String productBrand, String type, String colour, String image,
+			List<Wishlist> wishlist, ProductWebsite productWebsite) {
 		super();
-		this.productId = productId;
 		this.productName = productName;
 		this.productBrand = productBrand;
 		this.type = type;
@@ -108,16 +121,12 @@ public class Product {
 		this.productWebsite = productWebsite;
 	}
 
-	public List<ProductWebsite> getProductWebsite() {
-		return productWebsite;
-	}
-
-	public void setProductWebsite(List<ProductWebsite> productWebsite) {
-		this.productWebsite = productWebsite;
-	}
-
 	public Product() {
-
+		
 	}
+	
+	
+	
+	
 
 }

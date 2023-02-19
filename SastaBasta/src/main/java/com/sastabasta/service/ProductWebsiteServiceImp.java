@@ -6,16 +6,31 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sastabasta.entities.Product;
 import com.sastabasta.entities.ProductWebsite;
+import com.sastabasta.inputDto.ProductWebsiteInputDto;
+import com.sastabasta.repository.ProductRepository;
 import com.sastabasta.repository.ProductWebsiteRepository;
 @Service
 public class ProductWebsiteServiceImp implements ProductWebsiteService{
 	@Autowired
 	ProductWebsiteRepository productWebsiteRepository;
+	@Autowired
+	ProductRepository productRepository;
 	
 
 	@Override
-	public ProductWebsite addProductWebsite(ProductWebsite productWebsite) {
+	public ProductWebsite addProductWebsite(ProductWebsiteInputDto productWebsiteInputDto) {
+		
+		Product product=new Product(productWebsiteInputDto.getProductName(),productWebsiteInputDto.getProductBrand(),productWebsiteInputDto.getType(),productWebsiteInputDto.getColour(),productWebsiteInputDto.getImage(),null,null);		
+		productRepository.save(product);
+		ProductWebsite productWebsite=new ProductWebsite(
+				productWebsiteInputDto.getAmazonLink(),productWebsiteInputDto.getAmazonRating(),productWebsiteInputDto.getAmazonPrice(),productWebsiteInputDto.getAmazonDiscount(),
+				productWebsiteInputDto.getFlipcartLink(),productWebsiteInputDto.getFlipcartRating(),productWebsiteInputDto.getFlipcartPrice(),productWebsiteInputDto.getFlipcartDiscount(),
+				productWebsiteInputDto.getMyntraLink(),productWebsiteInputDto.getMyntraRating(),productWebsiteInputDto.getMyntraPrice(),productWebsiteInputDto.getMyntraDiscount()
+				);
+		
+		productWebsite.setProduct(product);
 		
 		return productWebsiteRepository.save(productWebsite) ;
 	}

@@ -1,23 +1,13 @@
-package com.sastabasta.entities;
+package com.sastabasta.inputDto;
 
-import java.util.List;
+public class ProductWebsiteInputDto {
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-@Entity
-public class ProductWebsite {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int webId;
+	
+	private String productName;
+	private String productBrand;
+	private String type;
+	private String colour;
+	private String image;
 	private String amazonLink;
 	private int amazonRating;
 	private double amazonPrice;
@@ -30,24 +20,35 @@ public class ProductWebsite {
 	private int myntraRating;
 	private double myntraPrice;
 	private double myntraDiscount;
-	
-	@OneToOne()
-	@JoinColumn(name = "product_id")
-	private Product product;
-	
-	
-	
-	public Product getProduct() {
-		return product;
+	public String getProductName() {
+		return productName;
 	}
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
-	public int getWebId() {
-		return webId;
+	public String getProductBrand() {
+		return productBrand;
 	}
-	public void setWebId(int webId) {
-		this.webId = webId;
+	public void setProductBrand(String productBrand) {
+		this.productBrand = productBrand;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getColour() {
+		return colour;
+	}
+	public void setColour(String colour) {
+		this.colour = colour;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 	public String getAmazonLink() {
 		return amazonLink;
@@ -121,7 +122,18 @@ public class ProductWebsite {
 	public void setMyntraDiscount(double myntraDiscount) {
 		this.myntraDiscount = myntraDiscount;
 	}
-	public ProductWebsite( String amazonLink, int amazonRating, double amazonPrice, double amazonDiscount,
+	public ProductWebsiteInputDto(String productName, String productBrand, String type, String colour, String image) {
+		super();
+		this.productName = productName;
+		this.productBrand = productBrand;
+		this.type = type;
+		this.colour = colour;
+		this.image = image;
+	}
+	public ProductWebsiteInputDto() {
+		super();
+	}
+	public ProductWebsiteInputDto(String amazonLink, int amazonRating, double amazonPrice, double amazonDiscount,
 			String flipcartLink, int flipcartRating, double flipcartPrice, double flipcartDiscount, String myntraLink,
 			int myntraRating, double myntraPrice, double myntraDiscount) {
 		super();
@@ -138,17 +150,7 @@ public class ProductWebsite {
 		this.myntraPrice = myntraPrice;
 		this.myntraDiscount = myntraDiscount;
 	}
-	public ProductWebsite() {
-		
-	}
 	
 	
 	
-	
-	
-	
-	
-	
-	
-
 }
