@@ -17,16 +17,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.sastabasta.entities.Customer;
-import com.sastabasta.exceptions.CustomerAlreadyExiststException;
-import com.sastabasta.exceptions.CustomerNotFoundException;
-import com.sastabasta.exceptions.EmptyCustomerListException;
-import com.sastabasta.exceptions.InvalidMobileNumberException;
+
+import com.sastabasta.exceptions.EmailAlreadyRegisteredException;
+
+import com.sastabasta.exceptions.MobileNumberAlreadyExistsException;
 import com.sastabasta.repository.CustomerRepository;
 import com.sastabasta.service.CustomerService;
 
 @SpringBootTest
 public class CustomerServiceTest {
-	
+
 	@Autowired
 	private CustomerService customerService;
 
@@ -44,14 +44,14 @@ public class CustomerServiceTest {
 	}
 
 	@Test
-	public void addCustomerTest() throws CustomerAlreadyExiststException, InvalidMobileNumberException {
+	public void addCustomerTest() throws EmailAlreadyRegisteredException, MobileNumberAlreadyExistsException {
 		Mockito.when(customerRepository.save(customer)).thenReturn(customer);
 
 		assertThat(customerService.addCustomer(customer)).isEqualTo(customer);
 	}
 
 	@Test
-	public void getAllCustomersTest() throws EmptyCustomerListException {
+	public void getAllCustomersTest() {
 		List<Customer> customerList = new ArrayList<>();
 
 		customerList.add(customer);
@@ -63,7 +63,7 @@ public class CustomerServiceTest {
 	}
 
 	@Test
-	public void updateCustomerTest() throws CustomerNotFoundException {
+	public void updateCustomerTest() {
 		Mockito.when(customerRepository.save(customer)).thenReturn(customer);
 
 		Mockito.when(customerRepository.findById(1)).thenReturn(Optional.of(customer));
@@ -82,15 +82,15 @@ public class CustomerServiceTest {
 	}
 
 	@Test
-	public void getCustomerByIdTest() throws CustomerNotFoundException {
+	public void getCustomerByIdTest() {
 
 		Mockito.when(customerRepository.findById(1)).thenReturn(Optional.of(customer));
 
-		assertThat(customerService.getCustomerById(1)).isEqualTo(customer);
+		assertThat(customerService.getCustomerById(1)).isEqualTo(Optional.of(customer));
 	}
 
 	@Test
-	public void deleteCustomerByIdTest() throws CustomerNotFoundException {
+	public void deleteCustomerByIdTest() {
 		Mockito.when(customerRepository.findById(1)).thenReturn(Optional.of(customer));
 
 		Mockito.doNothing().when(customerRepository).deleteById(1);

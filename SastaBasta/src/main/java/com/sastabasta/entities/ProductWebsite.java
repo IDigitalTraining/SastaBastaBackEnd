@@ -13,7 +13,10 @@ import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.Builder;
+
 @Entity
+@Builder
 public class ProductWebsite {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

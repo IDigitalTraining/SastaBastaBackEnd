@@ -7,12 +7,10 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-
 import com.sastabasta.entities.Product;
-import com.sastabasta.entities.Wishlist;
+import com.sastabasta.exceptions.ProductAlreadyExistsException;
 import com.sastabasta.inputDto.ProductInputDto;
 import com.sastabasta.repository.ProductRepository;
 import com.sastabasta.repository.WishlistRepository;
@@ -83,22 +81,22 @@ public class ProductServiceImp implements ProductService{
 	}
 
 	@Override
-	public Product addProductDto(ProductInputDto productDto) {
-		
-		Product productInputDto =new Product(); 
+	public Product addProductDto(ProductInputDto productDto) throws ProductAlreadyExistsException {
 
-	
-		productInputDto.setProductId(productDto.getProductId());
-		
+		Product productInputDto = new Product();
+
+		if (productRepository.findByProductAttribute(productDto.getProductName(), productDto.getColour(),
+				productDto.getProductBrand(), productDto.getType()).isPresent()) {
+			throw new ProductAlreadyExistsException("Product is already existing with these details");
+		}
 		productInputDto.setProductName(productDto.getProductName());
 		productInputDto.setProductBrand(productDto.getProductBrand());
 		productInputDto.setType(productDto.getType());
 		productInputDto.setColour(productDto.getColour());
 		productInputDto.setImage(productDto.getImage());
-		
-	
-		//return restaurantRepository.save(restaurantInputDto);
+
 		return productRepository.save(productInputDto);
+
 	}
 
 	

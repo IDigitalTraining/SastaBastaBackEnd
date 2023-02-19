@@ -7,12 +7,13 @@ import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 
 import com.sastabasta.entities.Product;
+import com.sastabasta.exceptions.ProductAlreadyExistsException;
 import com.sastabasta.inputDto.ProductInputDto;
 
 public interface ProductService {
 	
 	public Product addProduct(Product product);
-	public Product addProductDto(ProductInputDto productInputDto);
+	public Product addProductDto(ProductInputDto productInputDto) throws ProductAlreadyExistsException;
 	public Product editProduct(Product product);
 	public void deleteProduct(int productId);
 	public Optional<Product> getProductById(int productId);

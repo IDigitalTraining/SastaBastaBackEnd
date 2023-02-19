@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sastabasta.entities.Customer;
 import com.sastabasta.entities.Product;
 import com.sastabasta.entities.ProductWebsite;
 import com.sastabasta.entities.Wishlist;
-import com.sastabasta.exceptions.CustomerNotFoundException;
+import com.sastabasta.exceptions.CustomServiceException;
+import com.sastabasta.exceptions.ProductAlreadyExistsException;
 import com.sastabasta.inputDto.ProductInputDto;
 import com.sastabasta.service.ProductService;
 import com.sastabasta.service.ProductWebsiteService;
@@ -89,10 +89,14 @@ public class ProductController {
 		 
 	 }
 	 @PostMapping("/add/dto")
-		ResponseEntity<Product> addProductDto(@RequestBody ProductInputDto productInputDto) {
+		ResponseEntity<Product> addProductDto(@RequestBody ProductInputDto productInputDto)throws CustomServiceException {
 			
-			return new ResponseEntity<Product>(productService.addProductDto(productInputDto), HttpStatus.OK);
-		}
+			try {
+				return new ResponseEntity<Product>(productService.addProductDto(productInputDto), HttpStatus.OK);
+			} catch (ProductAlreadyExistsException e) {
+				throw new CustomServiceException(e.getMessage());
+			}
+	 }
 	 
 	 @DeleteMapping("/deleteProduct/{productId}")
 	 void deleteProdcut (@PathVariable int productId){

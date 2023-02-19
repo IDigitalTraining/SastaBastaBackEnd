@@ -1,6 +1,7 @@
 package com.sastabasta.exceptions;
 import java.util.Date;
 
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -11,14 +12,64 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 @ControllerAdvice
 @RestController
-public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {		
-	@ExceptionHandler(CustomerAlreadyPresentException.class)
-	public ResponseEntity<ErrorDetails> handleCustomerAlreadyPresentException(CustomerAlreadyPresentException ex,WebRequest request)
+public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+	
+	
+	@ExceptionHandler(EmailAlreadyRegisteredException.class)
+	public ResponseEntity<ErrorDetails> handleEmailAlreadyRegisteredException(EmailAlreadyRegisteredException ex,WebRequest request)
 	{
 		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), ex.getMessage());
 
 		return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.NOT_FOUND);
 	}
+	
+	
+	@ExceptionHandler(MobileNumberAlreadyExistsException.class)
+	public ResponseEntity<ErrorDetails> handleMobileNumberAlreadyExists(MobileNumberAlreadyExistsException ex,WebRequest request)
+	{
+		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), ex.getMessage());
+
+		return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(CustomServiceException.class)
+	public ResponseEntity<ErrorDetails> handleCustomerServiceException(CustomServiceException ex,WebRequest request)
+	{
+		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), ex.getMessage());
+
+		return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(ProductAlreadyExistsException.class)
+	public ResponseEntity<ErrorDetails> handleProductAlreadyExistsException(ProductAlreadyExistsException ex,WebRequest request)
+	{
+		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), ex.getMessage());
+
+		return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(ProductLinkAlreadyRegisteredException.class)
+	public ResponseEntity<ErrorDetails> handleProductLinkAlreadyRegisteredException(ProductLinkAlreadyRegisteredException ex,WebRequest request)
+	{
+		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), ex.getMessage());
+
+		return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(ProductWebsiteAlreadyExistsException.class)
+	public ResponseEntity<ErrorDetails> handleProductWebsiteAlreadyExistsException(ProductWebsiteAlreadyExistsException ex,WebRequest request)
+	{
+		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), ex.getMessage());
+
+		return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.BAD_REQUEST);
+	}
+	
+	
+	
+	
+	
+	
+	
 //	
 //	@ExceptionHandler(MethodArgumentNotValidException.class)
 //	public ResponseEntity<ErrorDetails> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex,WebRequest request)
@@ -28,13 +79,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 //		return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.NOT_FOUND);
 //	}
 //	
-	@ExceptionHandler(EmailOrPasswordException.class)
-	public ResponseEntity<ErrorDetails> handleEmailOrPasswordException(EmailOrPasswordException ex,WebRequest request)
-	{
-		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), ex.getMessage());
-
-		return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.NOT_FOUND);
-	}
 	
 	
 	
