@@ -1,17 +1,12 @@
 package com.sastabasta.entities;
 
-import java.util.List;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Builder;
 
@@ -21,14 +16,17 @@ public class ProductWebsite {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int webId;
+	@Column(name = "amazon_link", length = 2048)
 	private String amazonLink;
 	private int amazonRating;
 	private double amazonPrice;
 	private double amazonDiscount;
+	@Column(name = "flipcart_link", length = 2048)
 	private String flipcartLink;
 	private int flipcartRating;
 	private double flipcartPrice;
 	private double flipcartDiscount;
+	@Column(name = "myntra_link", length = 2048)
 	private String myntraLink;
 	private int myntraRating;
 	private double myntraPrice;
