@@ -47,7 +47,7 @@ public class CustomerController {
 	
 	@PutMapping("/editCustomer")
 	public ResponseEntity<Customer> editCustomer( @RequestBody Customer customer) throws CustomerNotFoundException {
-		return new ResponseEntity<Customer>(customerService.editCustomer(customer), HttpStatus.ACCEPTED);
+		return new ResponseEntity<Customer>(customerService.editCustomer(customer), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("deleteById/{id}")
@@ -57,7 +57,7 @@ public class CustomerController {
 	
 	@GetMapping("/getCustomer/{custId}")
 	public ResponseEntity<Optional<Customer>> getByCustId(@PathVariable int custId) throws CustomerNotFoundException {
-		return new ResponseEntity<Optional<Customer>>(customerService.getCustomerById(custId),HttpStatus.FOUND);
+		return new ResponseEntity<Optional<Customer>>(customerService.getCustomerById(custId),HttpStatus.OK);
 	}
 	@GetMapping("/getAllDetails/{custId}")
 	public List<Product> getAllDetails(@PathVariable int custId){
