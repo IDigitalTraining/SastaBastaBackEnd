@@ -38,10 +38,10 @@ public class ProductWebsiteController {
 		return new ResponseEntity<ProductWebsite>(productWebsiteService.addProductWebsite(productWebsiteInputDto) , HttpStatus.OK);
 	}
 	
-//	@PutMapping("/editProductWebsite")
-//	public ResponseEntity<ProductWebsite> editProductWebsite(@RequestBody ProductWebsite productWebsite) {
-//		return new ResponseEntity<ProductWebsite>(productWebsiteService.addProductWebsite(productWebsite) , HttpStatus.OK);
-//	}
+	@PutMapping("/editProductWebsite/{productId}")
+	public ResponseEntity<Product> editProductWebsite(@RequestBody ProductWebsite productWebsite,@PathVariable int productId) {
+		return new ResponseEntity<Product>(productWebsiteService.editProduct(productWebsite,productId) , HttpStatus.OK);
+	}
 	
 	@DeleteMapping("deleteById/{id}")
 	public void deleteProductWebsiteById(@PathVariable int id){

@@ -13,5 +13,7 @@ public interface ProductWebsiteRepository extends CrudRepository<ProductWebsite,
 //	public ProductWebsite findByProductRating(String productRating);
 //	public ProductWebsite findProductPrice(String productPrice);
 //	public ProductWebsite findProductDiscount(String productDiscount);
+	
+	public ProductWebsite findByProduct (Product product);
 
 }
