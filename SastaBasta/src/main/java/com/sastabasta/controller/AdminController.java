@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.sastabasta.entities.Admin;
+import com.sastabasta.exceptions.EmailOrPasswordException;
 import com.sastabasta.service.AdminService;
 import com.sastabasta.service.AdminServiceImp;
 
@@ -29,7 +30,7 @@ public class AdminController {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<Admin> checkLogin(@RequestBody Admin admin) {
+	public ResponseEntity<Admin> checkLogin(@RequestBody Admin admin) throws EmailOrPasswordException {
 		return new ResponseEntity<Admin>(adminService.findByEmailAndPassword(admin.getEmail(),admin.getPassword()), HttpStatus.OK);
 	}
 

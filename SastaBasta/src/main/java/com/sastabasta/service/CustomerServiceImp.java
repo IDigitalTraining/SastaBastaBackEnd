@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.sastabasta.exceptions.EmailOrPasswordException;
 import com.sastabasta.entities.Customer;
 import com.sastabasta.exceptions.CustomerAlreadyPresentException;
 import com.sastabasta.repository.CustomerRepository;
@@ -59,7 +59,10 @@ public class CustomerServiceImp implements CustomerService{
 
 
 	@Override
-	public Customer findByEmailAndPassword(String email, String password) {
+	public Customer findByEmailAndPassword(String email, String password) throws EmailOrPasswordException {
+		Customer result=customerRepository.findByEmailAndPassword(email,password);
+		if(result==null)
+		   throw new EmailOrPasswordException("error in ur passsword or email");
 		return customerRepository.findByEmailAndPassword(email, password);
 	}
 

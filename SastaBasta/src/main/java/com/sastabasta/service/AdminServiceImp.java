@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sastabasta.entities.Admin;
+import com.sastabasta.entities.Customer;
+import com.sastabasta.exceptions.EmailOrPasswordException;
 import com.sastabasta.repository.AdminRespository;
 
 @Service
@@ -13,8 +15,19 @@ public class AdminServiceImp implements AdminService{
 	AdminRespository adminRespository;
 
 	@Override
-	public Admin findByEmailAndPassword(String email, String password) {
+	public Admin findByEmailAndPassword(String email, String password) throws EmailOrPasswordException {
+		
+		Admin result =adminRespository.findByEmailAndPassword(email, password);
+		if(result==null)
+			throw new EmailOrPasswordException("error in ur email or password");
 		return adminRespository.findByEmailAndPassword(email, password);
+	
+		
+//		Customer result=customerRepository.findByEmailAndPassword(email,password);
+//		if(result==null)
+//		   throw new EmailOrPasswordException("error in ur passsword or email");
+//		return customerRepository.findByEmailAndPassword(email, password);
+//	}
 	}
 
 	@Override

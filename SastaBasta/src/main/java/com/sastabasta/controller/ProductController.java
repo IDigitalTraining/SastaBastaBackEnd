@@ -99,6 +99,12 @@ public class ProductController {
 		 productService.deleteProduct(productId);
 	 }
 	 
+	 @GetMapping("getProductDetailsById/{productId}")
+	 public ProductWebsite getProductDetails(@PathVariable int productId){
+		 ProductWebsite productwebsite= productService.getProductById(productId).get().getProductWebsite();
+		 return productwebsite;
+	}
+	 
 	
 		
 	

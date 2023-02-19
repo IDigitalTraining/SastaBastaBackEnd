@@ -22,6 +22,7 @@ import com.sastabasta.entities.Product;
 import com.sastabasta.entities.Wishlist;
 import com.sastabasta.exceptions.CustomerAlreadyExiststException;
 import com.sastabasta.exceptions.CustomerNotFoundException;
+import com.sastabasta.exceptions.EmailOrPasswordException;
 import com.sastabasta.exceptions.EmptyCustomerListException;
 import com.sastabasta.exceptions.InvalidMobileNumberException;
 import com.sastabasta.service.CustomerService;
@@ -68,7 +69,7 @@ public class CustomerController {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<Customer> checkLogin(@RequestBody Customer customer) {
+	public ResponseEntity<Customer> checkLogin(@RequestBody Customer customer) throws EmailOrPasswordException {
 		return new ResponseEntity<Customer>(customerService.findByEmailAndPassword(customer.getEmail(),customer.getPassword()), HttpStatus.OK);
 	}
 }
