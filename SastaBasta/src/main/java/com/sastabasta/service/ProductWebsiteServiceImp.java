@@ -65,7 +65,8 @@ public class ProductWebsiteServiceImp implements ProductWebsiteService{
 	//System.out.println(product.getProductName());
      product.setProductWebsite(productWebsite);
      productWebsite.setProduct(product);
-     productWebsiteRepository.save(productWebsite);
+    productWebsiteRepository.save(productWebsite);
+    // productRepository.save(product);
 	return product;
 	
 	

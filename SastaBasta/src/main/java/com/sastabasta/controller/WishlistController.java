@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -56,6 +57,13 @@ public class WishlistController {
 		Customer customer =customerService.getCustomerById(customerId).get();
 		wishlist.setCustomer(customer);
     	return new ResponseEntity<Wishlist>(wishlistService.addWishlist(wishlist),HttpStatus.OK);
+	}
+	
+	@GetMapping("getWishlist/{customerId}")
+	public ResponseEntity<Wishlist> getWishlist (@PathVariable int customerId){
+		Customer customer=customerService.getCustomerById(customerId).get();
+	//Wishlist wishlist =	customer.getWishlist();
+	return new ResponseEntity<Wishlist>(customer.getWishlist(),HttpStatus.OK);
 	}
 
 }
