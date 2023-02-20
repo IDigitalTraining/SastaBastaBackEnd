@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sastabasta.exceptions.EmailOrPasswordException;
+import com.sastabasta.exceptions.MobileNumberAlreadyExistsException;
 import com.sastabasta.entities.Customer;
 import com.sastabasta.exceptions.CustomerAlreadyPresentException;
+import com.sastabasta.exceptions.EmailAlreadyRegisteredException;
 import com.sastabasta.repository.CustomerRepository;
 @Service
 public class CustomerServiceImp implements CustomerService{
@@ -18,16 +20,14 @@ public class CustomerServiceImp implements CustomerService{
 
 
 	@Override
-	public Customer addCustomer(Customer customer) {
-		if(customer.getCustId()<0)
-		  throw new CustomerAlreadyPresentException("Enter Valid Customer Id");
-		else {
-			if(customerRepository.findByEmail(customer.getEmail()).isPresent() || customerRepository.findById(customer.getCustId()).isPresent()) {
-				 throw new CustomerAlreadyPresentException("Email already Registered");
-			}
-			
-		}
-		return customerRepository.save(customer);		
+	public Customer addCustomer(Customer customer)throws EmailAlreadyRegisteredException, MobileNumberAlreadyExistsException {
+		 if (customerRepository.findByEmail(customer.getEmail()).isPresent()) {
+	            throw new EmailAlreadyRegisteredException("Email already registered");
+	        }
+	        if (customerRepository.findByMobileNo(customer.getMobileNo()).isPresent()) {
+	            throw new MobileNumberAlreadyExistsException("Mobile number already exists");
+	        }
+	        return customerRepository.save(customer);		
 	}
 
 

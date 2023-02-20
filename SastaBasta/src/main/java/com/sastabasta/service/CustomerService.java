@@ -4,12 +4,14 @@ import java.util.*;
 import java.util.Optional;
 
 import com.sastabasta.entities.Customer;
+import com.sastabasta.exceptions.EmailAlreadyRegisteredException;
 import com.sastabasta.exceptions.EmailOrPasswordException;
+import com.sastabasta.exceptions.MobileNumberAlreadyExistsException;
 
 public interface CustomerService {
 
 
-	public Customer addCustomer(Customer customer);
+	public Customer addCustomer(Customer customer)throws EmailAlreadyRegisteredException, MobileNumberAlreadyExistsException;
 	public Optional<Customer> getCustomerById(int custId);
 	public void deleteById(int custId);
 	public Customer editCustomer(Customer customer);
