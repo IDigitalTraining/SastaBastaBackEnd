@@ -85,7 +85,7 @@ public class ProductController {
 	        Wishlist wishlist=wishlistService.getWishlistById(wishlistId).get();
 	       
 	        product.getWishlist().add(wishlist);
-	        return new ResponseEntity<Product>(productService.addProduct(product),HttpStatus.ACCEPTED);
+	        return new ResponseEntity<Product>(productService.addProduct(product),HttpStatus.OK);
 		 
 	 }
 	 @PostMapping("/add/dto")
@@ -109,6 +109,7 @@ public class ProductController {
 		 return productwebsite;
 	}
 	 
+
 	
 		
 	

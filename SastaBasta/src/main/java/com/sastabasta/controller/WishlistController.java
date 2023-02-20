@@ -43,12 +43,7 @@ public class WishlistController {
 	public void deleteWishlistById(@PathVariable int id){
 		wishlistService.deleteWishlist(id);
 	}
-	/*
-	 * @PostMapping("/assignProduct/{productId}/To/{wishlistId}") public void
-	 * assignProductToWishList(@PathVariable int productId,@PathVariable int
-	 * wishlistId) { wishlistService.assignProductToWishList(productId, wishlistId);
-	 * }
-	 */
+	
 	
 	@PutMapping("/{wishlistId}/setCustomer/{customerId}")
 	private ResponseEntity<Wishlist> addWishListToCustomer(@PathVariable int wishlistId, @PathVariable int customerId) throws CustomerNotFoundException{

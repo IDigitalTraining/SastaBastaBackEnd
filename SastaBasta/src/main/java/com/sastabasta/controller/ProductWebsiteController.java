@@ -53,17 +53,7 @@ public class ProductWebsiteController {
 		return new ResponseEntity<Optional<ProductWebsite>>(productWebsiteService.findProductWebsiteById(webId) ,HttpStatus.FOUND);
 	}
 	
-//	 @PutMapping("/{productId}/addProductToProductWebsite/{productWebsiteId}")
-//		private ResponseEntity<ProductWebsite> addProductToProductWebsite(@PathVariable int productId, @PathVariable int productWebsiteId) throws CustomerNotFoundException{
-//			
-//			Product product =productService.getProductById(productId).get();
-//			//Customer customer =customerService.getCustomerById(customerId).get();
-//			ProductWebsite productWebsite = productWebsiteService.findProductWebsiteById(productWebsiteId).get();
-//			//wishlist.setCustomer(customer);
-//			product.setProductWebsite(productWebsite);
-//			productWebsite.setProduct(product);
-//	    	return new ResponseEntity<ProductWebsite>(productWebsiteService.addProductWebsite(productWebsite),HttpStatus.OK);
-//		}
+
 	
 	@GetMapping("getAll")
 	private ResponseEntity<List<ProductWebsite>> getAllProductWebsite(){
