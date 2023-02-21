@@ -22,14 +22,14 @@ public class ProductWebsiteServiceImp implements ProductWebsiteService{
 	
 
 	@Override
-	public ProductWebsite addProductWebsite(ProductWebsiteInputDto productWebsiteInputDto) throws CommonProductWebsiteLinkException {
+	public ProductWebsite addProductWebsite(ProductWebsiteInputDto productWebsiteInputDto)  {
 		
 		Product product=new Product(productWebsiteInputDto.getProductName(),productWebsiteInputDto.getProductBrand(),productWebsiteInputDto.getType(),productWebsiteInputDto.getColour(),productWebsiteInputDto.getImage(),null,null);		
 		productRepository.save(product);
 		
-		if(productWebsiteInputDto.getAmazonLink().equals(productWebsiteInputDto.getFlipcartLink()) || productWebsiteInputDto.getFlipcartLink().equals(productWebsiteInputDto.getMyntraLink()) || productWebsiteInputDto.getMyntraLink().equals(productWebsiteInputDto.getAmazonLink())) {
-			throw new CommonProductWebsiteLinkException("You have entered the same links for different websites.Please enter the valid links");
-		}
+//		if(productWebsiteInputDto.getAmazonLink().equals(productWebsiteInputDto.getFlipcartLink()) || productWebsiteInputDto.getFlipcartLink().equals(productWebsiteInputDto.getMyntraLink()) || productWebsiteInputDto.getMyntraLink().equals(productWebsiteInputDto.getAmazonLink())) {
+//			throw new CommonProductWebsiteLinkException("You have entered the same links for different websites.Please enter the valid links");
+//		}
 		
 		ProductWebsite productWebsite=new ProductWebsite(
 				productWebsiteInputDto.getAmazonLink(),productWebsiteInputDto.getAmazonRating(),productWebsiteInputDto.getAmazonPrice(),productWebsiteInputDto.getAmazonDiscount(),

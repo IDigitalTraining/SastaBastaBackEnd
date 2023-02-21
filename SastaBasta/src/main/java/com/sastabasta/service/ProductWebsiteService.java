@@ -10,7 +10,7 @@ import com.sastabasta.inputDto.ProductWebsiteInputDto;
 
 public interface ProductWebsiteService {
 	
-	public ProductWebsite addProductWebsite(ProductWebsiteInputDto productWebsiteInputDto) throws CommonProductWebsiteLinkException;
+	public ProductWebsite addProductWebsite(ProductWebsiteInputDto productWebsiteInputDto) ;
 	public ProductWebsite updateProductWebsite(ProductWebsite productWebsite);
 	public Optional<ProductWebsite> findProductWebsiteById(int webId);
 	public void deleteProductWebsiteById(int webId);

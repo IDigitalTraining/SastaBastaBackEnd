@@ -35,12 +35,13 @@ public class ProductWebsiteController {
 	ProductService productService;
 	
 	@PostMapping("/addProductWebsite")
-	private ResponseEntity<ProductWebsite> addCustomer(@RequestBody ProductWebsiteInputDto productWebsiteInputDto) throws CustomServiceException {
-		try {
-			return new ResponseEntity<ProductWebsite>(productWebsiteService.addProductWebsite(productWebsiteInputDto) , HttpStatus.OK);
-		} catch (CommonProductWebsiteLinkException e) {
-			throw new CustomServiceException(e.getMessage());
-		}
+	private ResponseEntity<ProductWebsite> addCustomer(@RequestBody ProductWebsiteInputDto productWebsiteInputDto)  {
+//		try {
+//			return new ResponseEntity<ProductWebsite>(productWebsiteService.addProductWebsite(productWebsiteInputDto) , HttpStatus.OK);
+//		} catch (CommonProductWebsiteLinkException e) {
+//			throw new CustomServiceException(e.getMessage());
+//		}
+		return new ResponseEntity<ProductWebsite>(productWebsiteService.addProductWebsite(productWebsiteInputDto) , HttpStatus.OK);
 	}
 	
 	@PutMapping("/editProductWebsite/{productId}")
