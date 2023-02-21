@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sastabasta.entities.Customer;
 import com.sastabasta.entities.Product;
 import com.sastabasta.entities.Wishlist;
-import com.sastabasta.exceptions.CustomerNotFoundException;
+
 import com.sastabasta.service.CustomerService;
 import com.sastabasta.service.ProductService;
 import com.sastabasta.service.WishlistService;
@@ -46,7 +46,7 @@ public class WishlistController {
 	
 	
 	@PutMapping("/{wishlistId}/setCustomer/{customerId}")
-	private ResponseEntity<Wishlist> addWishListToCustomer(@PathVariable int wishlistId, @PathVariable int customerId) throws CustomerNotFoundException{
+	private ResponseEntity<Wishlist> addWishListToCustomer(@PathVariable int wishlistId, @PathVariable int customerId) {
 		
 		Wishlist wishlist =wishlistService.getWishlistById(wishlistId).get();
 		Customer customer =customerService.getCustomerById(customerId).get();

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.sastabasta.exceptions.EmailOrPasswordException;
 import com.sastabasta.exceptions.MobileNumberAlreadyExistsException;
 import com.sastabasta.entities.Customer;
-import com.sastabasta.exceptions.CustomerAlreadyPresentException;
+
 import com.sastabasta.exceptions.EmailAlreadyRegisteredException;
 import com.sastabasta.repository.CustomerRepository;
 @Service

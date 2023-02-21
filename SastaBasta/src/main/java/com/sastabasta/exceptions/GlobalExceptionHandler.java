@@ -48,21 +48,17 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.BAD_REQUEST);
 	}
 	
-	@ExceptionHandler(ProductLinkAlreadyRegisteredException.class)
-	public ResponseEntity<ErrorDetails> handleProductLinkAlreadyRegisteredException(ProductLinkAlreadyRegisteredException ex,WebRequest request)
+	@ExceptionHandler(CommonProductWebsiteLinkException.class)
+	public ResponseEntity<ErrorDetails> handleProductLinkAlreadyRegisteredException(CommonProductWebsiteLinkException ex,WebRequest request)
 	{
 		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), ex.getMessage());
 
 		return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.BAD_REQUEST);
 	}
 	
-	@ExceptionHandler(ProductWebsiteAlreadyExistsException.class)
-	public ResponseEntity<ErrorDetails> handleProductWebsiteAlreadyExistsException(ProductWebsiteAlreadyExistsException ex,WebRequest request)
-	{
-		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), ex.getMessage());
-
-		return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.BAD_REQUEST);
-	}
+	
+	
+	
 	
 	
 	

@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.sastabasta.entities.Product;
 import com.sastabasta.entities.ProductWebsite;
-import com.sastabasta.exceptions.IdNotFoundException;
+
+import com.sastabasta.exceptions.CommonProductWebsiteLinkException;
 import com.sastabasta.inputDto.ProductWebsiteInputDto;
 import com.sastabasta.repository.ProductRepository;
 import com.sastabasta.repository.ProductWebsiteRepository;
@@ -21,10 +22,15 @@ public class ProductWebsiteServiceImp implements ProductWebsiteService{
 	
 
 	@Override
-	public ProductWebsite addProductWebsite(ProductWebsiteInputDto productWebsiteInputDto) {
+	public ProductWebsite addProductWebsite(ProductWebsiteInputDto productWebsiteInputDto) throws CommonProductWebsiteLinkException {
 		
 		Product product=new Product(productWebsiteInputDto.getProductName(),productWebsiteInputDto.getProductBrand(),productWebsiteInputDto.getType(),productWebsiteInputDto.getColour(),productWebsiteInputDto.getImage(),null,null);		
 		productRepository.save(product);
+		
+		if(productWebsiteInputDto.getAmazonLink().equals(productWebsiteInputDto.getFlipcartLink()) || productWebsiteInputDto.getFlipcartLink().equals(productWebsiteInputDto.getMyntraLink()) || productWebsiteInputDto.getMyntraLink().equals(productWebsiteInputDto.getAmazonLink())) {
+			throw new CommonProductWebsiteLinkException("You have entered the same links for different websites.Please enter the valid links");
+		}
+		
 		ProductWebsite productWebsite=new ProductWebsite(
 				productWebsiteInputDto.getAmazonLink(),productWebsiteInputDto.getAmazonRating(),productWebsiteInputDto.getAmazonPrice(),productWebsiteInputDto.getAmazonDiscount(),
 				productWebsiteInputDto.getFlipcartLink(),productWebsiteInputDto.getFlipcartRating(),productWebsiteInputDto.getFlipcartPrice(),productWebsiteInputDto.getFlipcartDiscount(),

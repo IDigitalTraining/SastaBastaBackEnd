@@ -20,11 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sastabasta.entities.Customer;
 import com.sastabasta.entities.Product;
 import com.sastabasta.entities.Wishlist;
-import com.sastabasta.exceptions.CustomerAlreadyExiststException;
-import com.sastabasta.exceptions.CustomerNotFoundException;
+import com.sastabasta.exceptions.CustomServiceException;
+import com.sastabasta.exceptions.EmailAlreadyRegisteredException;
 import com.sastabasta.exceptions.EmailOrPasswordException;
 import com.sastabasta.exceptions.EmptyCustomerListException;
 import com.sastabasta.exceptions.InvalidMobileNumberException;
+import com.sastabasta.exceptions.MobileNumberAlreadyExistsException;
 import com.sastabasta.service.CustomerService;
 
 @RestController
@@ -35,9 +36,15 @@ public class CustomerController {
 	CustomerService customerService;
 	
 	@PostMapping("/addCustomer")
-	private ResponseEntity<Customer> addCustomer( @RequestBody Customer customer) throws Exception { 
+	private ResponseEntity<Customer> addCustomer( @RequestBody Customer customer) throws CustomServiceException  { 
 		
-			return new ResponseEntity<Customer>(customerService.addCustomer(customer), HttpStatus.OK);
+			try {
+				return new ResponseEntity<Customer>(customerService.addCustomer(customer), HttpStatus.OK);
+			} catch (EmailAlreadyRegisteredException | MobileNumberAlreadyExistsException e) {
+				throw new CustomServiceException(e.getMessage());
+//				System.out.println(e.getMessage());
+//				return null;
+			}
 	}
 	
 	@GetMapping("/allCustomer")
@@ -46,17 +53,17 @@ public class CustomerController {
 	}
 	
 	@PutMapping("/editCustomer")
-	public ResponseEntity<Customer> editCustomer( @RequestBody Customer customer) throws CustomerNotFoundException {
+	public ResponseEntity<Customer> editCustomer( @RequestBody Customer customer)  {
 		return new ResponseEntity<Customer>(customerService.editCustomer(customer), HttpStatus.OK);
 	}
 	
 	@DeleteMapping("deleteById/{id}")
-	public void deleteCustomerById(@PathVariable int id) throws CustomerNotFoundException{
+	public void deleteCustomerById(@PathVariable int id) {
 		customerService.deleteById(id);
 	}
 	
 	@GetMapping("/getCustomer/{custId}")
-	public ResponseEntity<Optional<Customer>> getByCustId(@PathVariable int custId) throws CustomerNotFoundException {
+	public ResponseEntity<Optional<Customer>> getByCustId(@PathVariable int custId)  {
 		return new ResponseEntity<Optional<Customer>>(customerService.getCustomerById(custId),HttpStatus.OK);
 	}
 	@GetMapping("/getAllDetails/{custId}")
