@@ -1,3 +1,12 @@
+/*@Author Dev Singh Parihar , Shuvam Jyoti Saha ,Sourabh Khanna
+
+This is Controller layer for Product and Filter  module 
+In this class client request is mapped  to the method and sends back the response to the client 
+
+In this controller all the request related to product and filter are handled
+
+*/
+
 package com.sastabasta.controller;
 
 import java.util.List;

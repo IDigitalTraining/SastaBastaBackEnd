@@ -1,3 +1,10 @@
+/*@Author Ashutosh Tripathi
+
+This the service implements class for Wishlist module
+in which all the business logic is written for Wishlist module
+
+*/
+
 package com.sastabasta.service;
 
 import java.util.Optional;

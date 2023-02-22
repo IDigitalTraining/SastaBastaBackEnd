@@ -1,3 +1,12 @@
+/*@Author Shuvam Jyoti Saha
+
+This is Controller layer for admin module 
+In this class client request is mapped  to the method and sends back the response to the client 
+
+In this controller the add admin and admin login request is handled
+
+*/
+
 package com.sastabasta.controller;
 
 import java.util.List;

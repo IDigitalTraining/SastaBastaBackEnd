@@ -1,3 +1,9 @@
+/*@Author Ashutosh Tripathi
+
+This is the repository layer for wishlist module
+
+*/
+
 package com.sastabasta.repository;
 
 import org.springframework.data.repository.CrudRepository;

@@ -1,3 +1,12 @@
+/*@Author Ashutosh Tripathi
+
+This is Controller layer for Wishlist module 
+In this class client request is mapped  to the method and sends back the response to the client 
+
+In this controller all the request related to Wishlist are handled.
+
+*/
+
 package com.sastabasta.controller;
 
 import java.util.List;

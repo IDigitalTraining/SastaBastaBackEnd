@@ -1,3 +1,10 @@
+/*@Author Vipin Dane
+
+This the service implements class for ProductWebiste module
+in which all the business logic is written for productWebsite module
+
+*/
+
 package com.sastabasta.service;
 
 import java.util.List;
@@ -76,52 +83,8 @@ public class ProductWebsiteServiceImp implements ProductWebsiteService{
 	return product;
 	
 	
-    
-	
-	
 	}
 	
-	
-
-
-
-//	@Override
-//	public ProductWebsite editProductWebsite(ProductWebsiteInputDto productWebsiteInputDto, int webId,
-//			int productId) {
-//		Optional<Product> product=productRepository.findById(productId);
-//		Optional<ProductWebsite> productWebsite=productWebsiteRepository.findById(webId);
-//		
-//		if(product.isEmpty() || productWebsite.isEmpty()) {
-//			throw new IdNotFoundException("Data not found");
-//		}
-//		
-//		else {
-//			product.get().setProductName(productWebsiteInputDto.getProductName());
-//			product.get().setProductBrand(productWebsiteInputDto.getProductBrand());
-//			product.get().setType(productWebsiteInputDto.getType());
-//			product.get().setColour(productWebsiteInputDto.getColour());
-//			product.get().setImage(productWebsiteInputDto.getImage());
-//			productRepository.save(product.get());
-//			
-//			productWebsite.get().setAmazonLink(productWebsiteInputDto.getAmazonLink());
-//			productWebsite.get().setAmazonRating(productWebsiteInputDto.getAmazonRating());
-//			productWebsite.get().setAmazonPrice(productWebsiteInputDto.getAmazonPrice());
-//			productWebsite.get().setAmazonDiscount(productWebsiteInputDto.getAmazonDiscount());
-//			
-//			productWebsite.get().setFlipcartLink(productWebsiteInputDto.getFlipcartLink());
-//			productWebsite.get().setFlipcartRating(productWebsiteInputDto.getFlipcartRating());
-//			productWebsite.get().setFlipcartPrice(productWebsiteInputDto.getFlipcartPrice());
-//			productWebsite.get().setFlipcartDiscount(productWebsiteInputDto.getFlipcartDiscount());
-//			
-//			productWebsite.get().setMyntraLink(productWebsiteInputDto.getMyntraLink());
-//			productWebsite.get().setMyntraRating(productWebsiteInputDto.getMyntraRating());
-//			productWebsite.get().setMyntraPrice(productWebsiteInputDto.getMyntraPrice());
-//			productWebsite.get().setMyntraDiscount(productWebsiteInputDto.getMyntraDiscount());
-//			productWebsite.get().setProduct(product.get());						
-//			
-//		}
-//		
-//		return productWebsiteRepository.save(productWebsite.get());
-//	}	
+		
 
 }

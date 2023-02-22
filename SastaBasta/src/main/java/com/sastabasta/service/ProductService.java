@@ -1,3 +1,11 @@
+/*@Author Dev Singh Parihar , Sourabh Khanna
+
+This the service interface for Product and filter module
+in which all the methods are declared according 
+the to the requirements for product and filter  module
+
+*/
+
 package com.sastabasta.service;
 
 import java.util.List;

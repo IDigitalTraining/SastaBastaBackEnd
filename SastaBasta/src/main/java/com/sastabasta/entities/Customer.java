@@ -1,3 +1,16 @@
+/*@author Deepali kosta
+
+This is an Entity class for Customer
+where basic details of customer is taken
+as private attributes and getter setters and constructor 
+are written to assess all those attributes outside the class
+
+In this class one to one relation is also established 
+between customer and wishlist
+
+*/
+
+
 package com.sastabasta.entities;
 
 import javax.persistence.Entity;

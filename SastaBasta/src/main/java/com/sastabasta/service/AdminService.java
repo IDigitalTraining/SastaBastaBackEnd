@@ -1,3 +1,9 @@
+/*@Author Shuvam Jyoti Shaha
+
+This is the service layer interface for admin module
+in which two methods are declared to add the admin and to login the admin
+
+*/
 package com.sastabasta.service;
 
 import com.sastabasta.entities.Admin;

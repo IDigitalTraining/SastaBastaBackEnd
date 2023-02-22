@@ -1,3 +1,19 @@
+/*@author Vipin Dane
+
+This is an Entity class for ProductWebsite
+where the details of product present
+on amazon, flipcart and myntra is taken the details are like:
+->link
+->rating
+->discount 
+->price
+
+In this class one to one relation is also established 
+between product and productWebsite
+
+*/
+
+
 package com.sastabasta.entities;
 
 import javax.persistence.Column;
@@ -11,7 +27,6 @@ import javax.persistence.OneToOne;
 import lombok.Builder;
 
 @Entity
-@Builder
 public class ProductWebsite {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

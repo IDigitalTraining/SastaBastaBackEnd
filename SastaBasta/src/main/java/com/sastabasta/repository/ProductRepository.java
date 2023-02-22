@@ -1,3 +1,13 @@
+/*@author Dev Singh Parihar , Sourabh Khanna
+
+This the repository layer for product module in which
+one custom method is written to find the product by brand, type, colour
+
+One custom query is also written which is used to write testCases
+*/
+
+
+
 package com.sastabasta.repository;
 
 import java.util.List;

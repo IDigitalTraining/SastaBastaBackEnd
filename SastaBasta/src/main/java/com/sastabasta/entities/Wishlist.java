@@ -1,3 +1,15 @@
+/*@author Ashutosh Tripathi
+
+This is an Entity class for Wishlist
+where only one private attribute is taken 
+i.e. wishlistId is taken and getter and setter is written for that
+The wishlistId is also autogenrated 
+In this many to many relation is established 
+between product and wishlist
+
+*/
+
+
 package com.sastabasta.entities;
 
 import java.util.List;

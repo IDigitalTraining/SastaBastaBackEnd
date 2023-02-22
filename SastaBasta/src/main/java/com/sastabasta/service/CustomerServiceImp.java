@@ -1,3 +1,10 @@
+/*@Author Deepali Kosta
+
+This the service implementation class for Customer module
+in which all all the business logic is written for the Customer module
+
+*/
+
 package com.sastabasta.service;
 
 

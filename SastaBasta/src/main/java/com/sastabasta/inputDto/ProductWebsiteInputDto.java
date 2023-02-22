@@ -1,3 +1,10 @@
+/*@author Vipin Dane
+
+This is the Input dto class for both product and productWebsite 
+this class will be used when we add product and productWebsite
+details on two different form on frontend
+*/
+
 package com.sastabasta.inputDto;
 
 public class ProductWebsiteInputDto {

@@ -1,3 +1,10 @@
+/*@Author Deepali Kosta
+
+This the service interface for Customer module
+in which all the methods are declared according 
+the to the requirements for customer module
+
+*/
 package com.sastabasta.service;
 
 import java.util.*;

@@ -1,3 +1,17 @@
+/*@author Dev Singh Parihar
+
+This is an Entity class for Product
+where basic details of product is taken
+as private attributes and getter setters and constructor 
+are written to assess all those attributes outside the class
+
+In this class one to one relation is also established 
+between product and productWebsite and
+many to many relationship is established between product and wishlist
+
+*/
+
+
 package com.sastabasta.entities;
 
 import java.util.List;

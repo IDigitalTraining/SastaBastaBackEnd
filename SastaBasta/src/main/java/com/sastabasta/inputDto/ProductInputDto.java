@@ -1,3 +1,9 @@
+/*@author Shuvam jyoti shah
+
+This the the input dto class for product 
+this can be used when user want to add only product details 
+without the mapping details of the mapped object
+*/
 package com.sastabasta.inputDto;
 
 public class ProductInputDto {

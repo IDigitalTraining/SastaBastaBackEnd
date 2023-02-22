@@ -1,3 +1,9 @@
+/*@author Deepali Kosta
+
+This the repository layer for customer module in which
+custom methods is written to find the customer by Email, password,mobileNo
+*/
+
 package com.sastabasta.repository;
 
 import java.util.Optional;

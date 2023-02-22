@@ -1,3 +1,10 @@
+/*@Author Dev Singh Parihar , Sourabh Khanna
+
+This the service implements class for Product and filter module
+in which all the business logic is written for product and filter module
+
+*/
+
 package com.sastabasta.service;
 
 import java.util.List;

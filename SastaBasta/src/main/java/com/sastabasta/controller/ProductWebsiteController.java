@@ -1,3 +1,12 @@
+/*@Author Vipin Dane
+
+This is Controller layer for ProductWebsite module 
+In this class client request is mapped  to the method and sends back the response to the client 
+
+In this controller all the request related to ProductWebsite are handled
+
+*/
+
 package com.sastabasta.controller;
 
 import java.util.List;

@@ -1,3 +1,10 @@
+/*@Author Shuvam Jyoti Saha
+
+This is the service implementation calss of AdminService, 
+in this class the business logic of the method are written to add the 
+admin and admin login 
+
+*/
 package com.sastabasta.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
