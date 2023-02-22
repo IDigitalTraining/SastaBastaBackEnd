@@ -1,9 +1,9 @@
-/*@Author Shuvam Jyoti Saha
+/*@Author Deepali Kosta
 
-This is Controller layer for admin module 
+This is Controller layer for Customer module 
 In this class client request is mapped  to the method and sends back the response to the client 
 
-In this controller the add admin and admin login request is handled
+In this controller all the request related to customer are handled
 
 */
 
