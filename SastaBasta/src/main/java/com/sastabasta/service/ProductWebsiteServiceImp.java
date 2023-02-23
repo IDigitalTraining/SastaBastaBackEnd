@@ -34,9 +34,7 @@ public class ProductWebsiteServiceImp implements ProductWebsiteService{
 		Product product=new Product(productWebsiteInputDto.getProductName(),productWebsiteInputDto.getProductBrand(),productWebsiteInputDto.getType(),productWebsiteInputDto.getColour(),productWebsiteInputDto.getImage(),null,null);		
 		productRepository.save(product);
 		
-//		if(productWebsiteInputDto.getAmazonLink().equals(productWebsiteInputDto.getFlipcartLink()) || productWebsiteInputDto.getFlipcartLink().equals(productWebsiteInputDto.getMyntraLink()) || productWebsiteInputDto.getMyntraLink().equals(productWebsiteInputDto.getAmazonLink())) {
-//			throw new CommonProductWebsiteLinkException("You have entered the same links for different websites.Please enter the valid links");
-//		}
+
 		
 		ProductWebsite productWebsite=new ProductWebsite(
 				productWebsiteInputDto.getAmazonLink(),productWebsiteInputDto.getAmazonRating(),productWebsiteInputDto.getAmazonPrice(),productWebsiteInputDto.getAmazonDiscount(),
@@ -75,11 +73,11 @@ public class ProductWebsiteServiceImp implements ProductWebsiteService{
 	@Override
 	public Product editProduct(ProductWebsite productWebsite,int productId) {
 	Product product =productRepository.findById(productId).get();
-	//System.out.println(product.getProductName());
+	
      product.setProductWebsite(productWebsite);
      productWebsite.setProduct(product);
     productWebsiteRepository.save(productWebsite);
-    // productRepository.save(product);
+  
 	return product;
 	
 	

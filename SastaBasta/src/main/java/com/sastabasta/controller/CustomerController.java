@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sastabasta.entities.Customer;
 import com.sastabasta.entities.Product;
 import com.sastabasta.entities.Wishlist;
-import com.sastabasta.exceptions.CustomServiceException;
+
 import com.sastabasta.exceptions.EmailAlreadyRegisteredException;
 import com.sastabasta.exceptions.EmailOrPasswordException;
 import com.sastabasta.exceptions.EmptyCustomerListException;
@@ -45,15 +45,11 @@ public class CustomerController {
 	CustomerService customerService;
 	
 	@PostMapping("/addCustomer")
-	private ResponseEntity<Customer> addCustomer( @RequestBody Customer customer) throws CustomServiceException  { 
+	private ResponseEntity<Customer> addCustomer( @RequestBody Customer customer) throws EmailAlreadyRegisteredException, MobileNumberAlreadyExistsException  { 
 		
-			try {
+			    
 				return new ResponseEntity<Customer>(customerService.addCustomer(customer), HttpStatus.OK);
-			} catch (EmailAlreadyRegisteredException | MobileNumberAlreadyExistsException e) {
-				throw new CustomServiceException(e.getMessage());
-//				System.out.println(e.getMessage());
-//				return null;
-			}
+			
 	}
 	
 	@GetMapping("/allCustomer")

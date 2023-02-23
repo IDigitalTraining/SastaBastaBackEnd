@@ -68,8 +68,6 @@ public class CustomerServiceTest {
 
 		Mockito.when(customerRepository.findById(1)).thenReturn(Optional.of(customer));
 
-		// Customer updatedCustomer = new Customer(1,"Deepali
-		// Kosta",7662345798L,"deepali1234@gmail.com","3456gffsf" );
 
 		customer.setCustName("Deepali Kosta");
 

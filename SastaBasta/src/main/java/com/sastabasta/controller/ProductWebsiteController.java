@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sastabasta.entities.Product;
 import com.sastabasta.entities.ProductWebsite;
 import com.sastabasta.exceptions.CommonProductWebsiteLinkException;
-import com.sastabasta.exceptions.CustomServiceException;
+
 import com.sastabasta.inputDto.ProductWebsiteInputDto;
 import com.sastabasta.service.ProductService;
 import com.sastabasta.service.ProductWebsiteService;
@@ -45,11 +45,7 @@ public class ProductWebsiteController {
 	
 	@PostMapping("/addProductWebsite")
 	private ResponseEntity<ProductWebsite> addCustomer(@RequestBody ProductWebsiteInputDto productWebsiteInputDto)  {
-//		try {
-//			return new ResponseEntity<ProductWebsite>(productWebsiteService.addProductWebsite(productWebsiteInputDto) , HttpStatus.OK);
-//		} catch (CommonProductWebsiteLinkException e) {
-//			throw new CustomServiceException(e.getMessage());
-//		}
+
 		return new ResponseEntity<ProductWebsite>(productWebsiteService.addProductWebsite(productWebsiteInputDto) , HttpStatus.OK);
 	}
 	

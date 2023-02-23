@@ -8,10 +8,11 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-@ControllerAdvice
-@RestController
+
+@RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	
 	
@@ -32,13 +33,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.NOT_FOUND);
 	}
 	
-	@ExceptionHandler(CustomServiceException.class)
-	public ResponseEntity<ErrorDetails> handleCustomerServiceException(CustomServiceException ex,WebRequest request)
-	{
-		ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), ex.getMessage());
-
-		return new ResponseEntity<ErrorDetails>(errorDetails, HttpStatus.BAD_REQUEST);
-	}
+	
 	
 	@ExceptionHandler(ProductAlreadyExistsException.class)
 	public ResponseEntity<ErrorDetails> handleProductAlreadyExistsException(ProductAlreadyExistsException ex,WebRequest request)

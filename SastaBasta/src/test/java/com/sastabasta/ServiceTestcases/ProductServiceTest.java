@@ -15,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.sastabasta.entities.Product;
 import com.sastabasta.service.ProductService;
-//import com.sastabasta.exceptions.ProductNotFoundException;
 
 @SpringBootTest
 class ProductServiceTest {
@@ -39,21 +38,7 @@ class ProductServiceTest {
 	void tearDown() throws Exception {
 	}
 
-//	@Test
-//	void addProductTest(){
-//		Product pro = new Product();
-//		pro.setProductName("Gym Bag");
-//		pro.setProductBrand("Wildcraft");
-//		pro.setType("test");
-//		pro.setColour("Green");
-//		Product newPro= productService.addProduct(pro);
-//		assertEquals("Gym Bag",newPro.getProductName());
-//		assertEquals("Wildcraft",newPro.getProductBrand());
-//		assertEquals("test",newPro.getType());
-//		assertEquals("Green",newPro.getColour());
-//		
-//	}
-//	
+
 	@Test
 	void updateProduct()  {
 		Product pro = new Product();
@@ -69,50 +54,6 @@ class ProductServiceTest {
 		assertEquals("Green",updatedProduct.getColour());
 	}
 	
-//	
-//	
-//	@Test
-//	void deleteProductTest() throws ProductNotFoundException {
-//		Product pro = productService.deleteProduct(1);
-//		assertEquals("Gym Bag", pro.getProductName());
-//	}
-//	
-//	@Test
-//	void getProductByIdTest() {
-//		Optional<Product> productDetails = productService.getProductById(2);
-//		Product pro=productDetails.get();
-//		assertEquals("Gym Bag", pro.getProductName());
-//		assertEquals("Skybags", pro.getProductBrand());
-//	}
-//	
-//	@Test
-//	void getAllProductTest() {
-//		List<Product> products = productService.getAllProduct();
-//		assertEquals(1, products.size());
-//		Product product = products.get(0);
-//		assertEquals("Skybags", product.getProductBrand());
-//	}
-//	
-//	@Test
-//	void findProductsByBrandTest() {
-//		List<Product> products = productService.findProductsByBrand("Skybags");
-//		Product product = products.get(0);
-//		assertEquals("Gym Bag", product.getProductName());
-//	}
-//	
-//	@Test
-//	void findProductsByTypeTest() {
-//		List<Product> products = productService.findProductsByType("test");
-//		Product product = products.get(0);
-//		assertEquals("Gym Bag", product.getProductName());
-//	}
-//	
-//	@Test
-//	void findProductsByColourTest() {
-//		List<Product> products = productService.findProductsByColour("Green");
-//		Product product = products.get(0);
-//		assertEquals("Gym Bag", product.getProductName());
-//	}
-//	
+
 
 }

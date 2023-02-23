@@ -108,31 +108,7 @@ public class ProductWebsiteServiceTest {
 		assertThat(productService.findAllProduct()).isEqualTo(productWebsiteList);
 	}
 
-//	@Test
-//	public void updateProductWebsiteTest() {
-//		Mockito.when(productWebsiteRepository.save(productWebsite)).thenReturn(productWebsite);
-//
-//		Mockito.when(productWebsiteRepository.findById(1)).thenReturn(Optional.of(productWebsite));
-//
-//		
-//		productWebsiteInputDto.setAmazonRating(3);
-//		productWebsiteInputDto.setAmazonPrice(4100);
-//		productWebsiteInputDto.setAmazonDiscount(300);
-//		
-//		ProductWebsite productWebsite=new ProductWebsite(
-//				productWebsiteInputDto.getAmazonLink(),productWebsiteInputDto.getAmazonRating(),productWebsiteInputDto.getAmazonPrice(),productWebsiteInputDto.getAmazonDiscount(),
-//				productWebsiteInputDto.getFlipcartLink(),productWebsiteInputDto.getFlipcartRating(),productWebsiteInputDto.getFlipcartPrice(),productWebsiteInputDto.getFlipcartDiscount(),
-//				productWebsiteInputDto.getMyntraLink(),productWebsiteInputDto.getMyntraRating(),productWebsiteInputDto.getMyntraPrice(),productWebsiteInputDto.getMyntraDiscount()
-//				);
-//
-//		ProductWebsite result = productService.updateProductWebsite(productWebsite);
-//
-//		
-//		assertEquals(3, result.getAmazonRating());
-//		assertEquals(4100, result.getAmazonPrice());
-//		assertEquals(300, result.getAmazonDiscount());
-//		
-//	}
+
 
 	@Test
 	public void getProductWebsiteByIdTest() {

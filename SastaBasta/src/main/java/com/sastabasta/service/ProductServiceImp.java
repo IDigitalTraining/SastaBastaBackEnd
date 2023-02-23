@@ -53,14 +53,14 @@ public class ProductServiceImp implements ProductService{
 
 	@Override
 	public List<Product> filterProduct(Map<String, String> map) {
-		TreeMap<String, String> sorted = new TreeMap<>();
-		sorted.putAll(map);
+		//TreeMap<String, String> sorted = new TreeMap<>();
+		//sorted.putAll(map);
 		List<Product> products=(List<Product>) productRepository.findAll();
 		return products.stream()
-				.filter(product -> map.get("colour")==null ||  product.getColour().equalsIgnoreCase(sorted.get("colour")))
-				.filter(product -> map.get("productBrand")==null ||  product.getProductBrand().equalsIgnoreCase(sorted.get("productBrand")))
-			      .filter(product -> map.get("productName")==null  ||  product.getProductName().equalsIgnoreCase(sorted.get("productName")))
-			      .filter(product -> map.get("type")==null  ||  product.getType().equalsIgnoreCase(sorted.get("type")))
+				.filter(product -> map.get("colour")==null ||  product.getColour().equalsIgnoreCase(map.get("colour")))
+				.filter(product -> map.get("productBrand")==null ||  product.getProductBrand().equalsIgnoreCase(map.get("productBrand")))
+			      .filter(product -> map.get("productName")==null  ||  product.getProductName().equalsIgnoreCase(map.get("productName")))
+			      .filter(product -> map.get("type")==null  ||  product.getType().equalsIgnoreCase(map.get("type")))
 			      
 			      .collect(Collectors.toList());
 		

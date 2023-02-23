@@ -1,8 +1,9 @@
-/*@author Shuvam Jyoti Shah
+/**@author Shuvam Jyoti Shah
 
 This is an Entity class for admin were 
 getter and setter and constructor is written
 to access the private element of the class
+
 */
 
 package com.sastabasta.entities;

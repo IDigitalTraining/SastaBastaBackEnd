@@ -1,4 +1,4 @@
-/*@author Vipin Dane
+/**@author Vipin Dane
 
 This is an Entity class for ProductWebsite
 where the details of product present

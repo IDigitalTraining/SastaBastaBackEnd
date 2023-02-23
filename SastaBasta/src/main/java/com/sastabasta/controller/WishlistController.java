@@ -66,7 +66,7 @@ public class WishlistController {
 	@GetMapping("getWishlist/{customerId}")
 	public ResponseEntity<Wishlist> getWishlist (@PathVariable int customerId){
 		Customer customer=customerService.getCustomerById(customerId).get();
-	//Wishlist wishlist =	customer.getWishlist();
+	
 	return new ResponseEntity<Wishlist>(customer.getWishlist(),HttpStatus.OK);
 	}
 	
